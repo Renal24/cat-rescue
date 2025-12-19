@@ -410,19 +410,24 @@
 
         /* Мобильная версия для шапки */
         @media (max-width: 768px) {
-            .header-photo-container {
-                height: 280px;
-            }
-            
-            .header-content .logo {
-                font-size: 2rem;
-            }
-            
-            .header-content .tagline {
-                font-size: 1.1rem;
-                padding: 0 15px;
-            }
-        }
+    .header-photo-container {
+        height: 300px;
+    }
+    
+    /* ДОБАВЬ ЭТУ СТРОКУ: */
+    .header-photo {
+        object-position: center 25%; /* или любое другое значение */
+    }
+    
+    .header-content .logo {
+        font-size: 2rem;
+    }
+    
+    .header-content .tagline {
+        font-size: 1.1rem;
+        padding: 0 15px;
+    }
+}
 
         /* Десктопная версия (большие экраны) */
         @media (min-width: 768px) {
