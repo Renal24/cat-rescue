@@ -32,9 +32,10 @@
     font-family: 'Segoe UI', 'Arial', sans-serif;
     background: 
         /* Твоё фото как фон */
-          url('images/fon.jpg') center/background-size: contain; no-repeat fixed,
+        url('images/fon.jpg') center no-repeat fixed,
         /* Полупрозрачный слой поверх для читаемости текста */
         linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.9));
+    background-size: contain; /* ← ОТДЕЛЬНАЯ СТРОКА! */
     color: var(--text-gray);
     min-height: 100vh;
     line-height: 1.6;
