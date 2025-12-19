@@ -7,16 +7,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-    --pastel-peach: #FFDAB9;
-    --pastel-mint: #B5EAD7;
-    --pastel-lavender: #E6E6FA;
-    --pastel-blue: #B3E0FF;
-    --pastel-pink: #FFB6C1;
-    --pastel-yellow: #FFFACD;
-    --soft-gray: #F5F5F5;
-    --warm-brown: #D2B48C;
-    --soft-text: #5D5D5D;
-    --accent-coral: #FF7F50;
+    /* МЯГКАЯ ПАСТЕЛЬ */
+    --soft-peach: #FFE8D6;     /* Мягкий персик */
+    --soft-mint: #D8F3DC;      /* Очень светлая мята */
+    --soft-lavender: #F1E6FF;  /* Светлая лаванда */
+    --soft-blue: #E2F0FF;      /* Светлый голубой */
+    --soft-pink: #FFE6E6;      /* Светлый розовый */
+    --soft-yellow: #FFF9E6;    /* Светлый лимонный */
+    
+    /* Акценты */
+    --accent-coral: #FFA07A;   /* Лососевый (мягче) */
+    --accent-teal: #81C3B8;    /* Мятно-бирюзовый */
+    
+    /* Текст */
+    --text-gray: #666666;      /* Серый текст */
+    --text-dark: #4A4A4A;      /* Темнее для заголовков */
 }
 
         * {
@@ -26,12 +31,8 @@
         }
 
         body {
-    font-family: 'Playfair Display', 'Times New Roman', serif;
-    background: linear-gradient(135deg, var(--pastel-mint) 0%, var(--pastel-lavender) 100%);
-    color: var(--soft-text);
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
+    background: linear-gradient(135deg, var(--soft-mint) 0%, var(--soft-lavender) 100%);
+    color: var(--text-gray);
 }
 
 /*
@@ -82,19 +83,10 @@
         }
 
         .emergency-banner {
-            background: linear-gradient(90deg, #ff6b6b, #ff8e53);
-            color: white;
-            padding: 12px;
-            text-align: center;
-            font-size: 1rem;
-            font-weight: bold;
-            border: 2px solid var(--gold);
-            margin: 15px auto;
-            width: 95%;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
-            animation: pulse 2s infinite;
-        }
+    background: linear-gradient(90deg, #FFB6A4, #FF9A8B); /* Мягкий градиент */
+    color: white;
+    border: none;
+}
 
         @keyframes pulse {
             0% { box-shadow: 0 0 15px rgba(255, 107, 107, 0.5); }
@@ -135,16 +127,10 @@
         }
 
         .cat-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid var(--gold);
-            border-radius: 15px;
-            padding: 20px;
-            width: 100%;
-            max-width: 500px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+    background: rgba(255, 255, 255, 0.95); /* Почти белый */
+    border: 2px solid var(--soft-pink);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
 
         .cat-card:hover {
             transform: translateY(-5px);
@@ -223,26 +209,11 @@
         }
 
         .donate-button {
-            background: linear-gradient(45deg, var(--emerald), #02C74D);
-            color: white;
-            border: none;
-            padding: 18px 40px;
-            font-size: 1.4rem;
-            font-weight: bold;
-            border-radius: 40px;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 15px;
-            box-shadow: 0 8px 20px rgba(2, 138, 15, 0.4);
-            position: relative;
-            overflow: hidden;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            width: 100%;
-            max-width: 350px;
-            justify-content: center;
-        }
+    background: linear-gradient(45deg, var(--accent-teal), #94D3CC);
+    color: white;
+    border: none;
+    box-shadow: 0 5px 15px rgba(129, 195, 184, 0.3);
+}
 
         .donate-button:hover {
             transform: scale(1.03);
