@@ -7,22 +7,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-    /* МЯГКАЯ ПАСТЕЛЬ */
-    --soft-peach: #FFE8D6;     /* Мягкий персик */
-    --soft-mint: #D8F3DC;      /* Очень светлая мята */
-    --soft-lavender: #F1E6FF;  /* Светлая лаванда */
-    --soft-blue: #E2F0FF;      /* Светлый голубой */
-    --soft-pink: #FFE6E6;      /* Светлый розовый */
-    --soft-yellow: #FFF9E6;    /* Светлый лимонный */
-    
-    /* Акценты */
-    --accent-coral: #FFA07A;   /* Лососевый (мягче) */
-    --accent-teal: #81C3B8;    /* Мятно-бирюзовый */
-    
-    /* Текст */
-    --text-gray: #666666;      /* Серый текст */
-    --text-dark: #4A4A4A;      /* Темнее для заголовков */
-}
+            --soft-peach: #FFE8D6;
+            --soft-mint: #D8F3DC;
+            --soft-lavender: #F1E6FF;
+            --soft-blue: #E2F0FF;
+            --soft-pink: #FFE6E6;
+            --soft-yellow: #FFF9E6;
+            --accent-coral: #FF9F80;
+            --accent-teal: #7BC5C1;
+            --accent-lilac: #C5A8FF;
+            --text-gray: #5A5A5A;
+            --text-dark: #3A3A3A;
+            --white: #FFFFFF;
+            --light-gray: #F8F9FA;
+        }
 
         * {
             margin: 0;
@@ -31,28 +29,12 @@
         }
 
         body {
-    background: linear-gradient(135deg, var(--soft-mint) 0%, var(--soft-lavender) 100%);
-    color: var(--text-gray);
-}
-
-/*
-        .header {
-            background: linear-gradient(to right, rgba(44, 0, 62, 0.9), rgba(15, 82, 186, 0.8));
-            padding: 20px 0;
-            text-align: center;
-            border-bottom: 3px solid var(--gold);
-            position: relative;
-            overflow: hidden;
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: linear-gradient(135deg, var(--soft-mint) 0%, var(--soft-blue) 100%);
+            color: var(--text-gray);
+            min-height: 100vh;
+            line-height: 1.6;
         }
-
-        .header::after {
-            content: '✨';
-            position: absolute;
-            font-size: 1.5rem;
-            animation: twinkle 3s infinite;
-        }
-        
-        */
 
         @keyframes twinkle {
             0%, 100% { opacity: 0.3; }
@@ -62,45 +44,49 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            color: var(--gold);
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            color: var(--accent-teal);
             letter-spacing: 1px;
             margin-bottom: 8px;
-            padding: 0 15px;
         }
 
         .logo i {
-            color: var(--emerald);
+            color: var(--accent-lilac);
             margin-right: 10px;
         }
 
         .tagline {
             font-size: 1rem;
-            color: var(--dark-marble);
+            color: var(--text-dark);
             font-style: italic;
             margin-bottom: 15px;
-            padding: 0 15px;
+            opacity: 0.9;
         }
 
         .emergency-banner {
-    background: linear-gradient(90deg, #FFB6A4, #FF9A8B); /* Мягкий градиент */
-    color: white;
-    border: none;
-}
+            background: linear-gradient(90deg, var(--accent-coral), #FF8A6B);
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 10px;
+            margin: 15px auto;
+            width: 95%;
+            box-shadow: 0 4px 15px rgba(255, 159, 128, 0.3);
+        }
 
         @keyframes pulse {
-            0% { box-shadow: 0 0 15px rgba(255, 107, 107, 0.5); }
-            50% { box-shadow: 0 0 30px rgba(255, 107, 107, 0.8); }
-            100% { box-shadow: 0 0 15px rgba(255, 107, 107, 0.5); }
+            0% { box-shadow: 0 4px 15px rgba(255, 159, 128, 0.3); }
+            50% { box-shadow: 0 6px 20px rgba(255, 159, 128, 0.5); }
+            100% { box-shadow: 0 4px 15px rgba(255, 159, 128, 0.3); }
         }
 
         .main-title {
             font-size: 1.8rem;
             text-align: center;
             margin: 25px 15px;
-            color: var(--gold);
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            color: var(--accent-teal);
+            letter-spacing: 1.5px;
             position: relative;
             padding-bottom: 15px;
         }
@@ -111,9 +97,10 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 150px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--accent-lilac), transparent);
+            border-radius: 2px;
         }
 
         .cats-section {
@@ -127,22 +114,28 @@
         }
 
         .cat-card {
-    background: rgba(255, 255, 255, 0.95); /* Почти белый */
-    border: 2px solid var(--soft-pink);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-}
+            background: var(--white);
+            border: 2px solid var(--soft-peach);
+            border-radius: 18px;
+            padding: 25px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
+            transition: all 0.3s ease;
+        }
 
         .cat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border-color: var(--accent-lilac);
         }
 
         .cat-name {
-            font-size: 1.6rem;
-            color: var(--gold);
+            font-size: 1.7rem;
+            color: var(--accent-teal);
             text-align: center;
             margin-bottom: 20px;
-            font-weight: bold;
+            font-weight: 700;
         }
 
         .cat-image {
@@ -150,75 +143,92 @@
             height: 250px;
             object-fit: cover;
             border-radius: 12px;
-            border: 2px solid var(--dark-gold);
+            border: 3px solid var(--soft-peach);
             margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
         }
 
         .cat-description {
-            font-size: 1rem;
-            line-height: 1.5;
-            color: var(--dark-marble);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-gray);
             margin-bottom: 15px;
             text-align: justify;
         }
 
         .medical-info {
-            background: rgba(255, 107, 107, 0.1);
-            border-left: 3px solid #ff6b6b;
-            padding: 12px;
-            margin: 15px 0;
-            border-radius: 0 8px 8px 0;
+            background: linear-gradient(90deg, rgba(255, 230, 230, 0.3), rgba(255, 240, 240, 0.5));
+            border-left: 4px solid var(--accent-coral);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
         }
 
         .medical-info h3 {
-            color: #ff6b6b;
+            color: var(--accent-coral);
             margin-bottom: 8px;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         .donation-section {
             text-align: center;
             margin: 40px auto;
             max-width: 95%;
-            padding: 25px;
-            background: linear-gradient(135deg, rgba(15, 82, 186, 0.1), rgba(2, 138, 15, 0.1));
-            border: 2px solid var(--sapphire);
-            border-radius: 15px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.95));
+            border: 2px solid var(--soft-lavender);
+            border-radius: 20px;
             position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
 
         .donation-section::before,
         .donation-section::after {
-            display: none; /* Скрываем на мобильных */
+            display: none;
         }
 
         .donation-title {
-            font-size: 1.6rem;
-            color: var(--emerald);
+            font-size: 1.7rem;
+            color: var(--accent-teal);
             margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(2, 138, 15, 0.3);
+            font-weight: 700;
         }
 
         .donation-amount {
-            font-size: 2.2rem;
-            color: var(--gold);
-            font-weight: bold;
+            font-size: 2.3rem;
+            color: var(--accent-lilac);
+            font-weight: 800;
             margin: 20px 0;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+            text-shadow: 0 2px 5px rgba(197, 168, 255, 0.1);
         }
 
         .donate-button {
-    background: linear-gradient(45deg, var(--accent-teal), #94D3CC);
-    color: white;
-    border: none;
-    box-shadow: 0 5px 15px rgba(129, 195, 184, 0.3);
-}
+            background: linear-gradient(45deg, var(--accent-teal), #8FD3D0);
+            color: white;
+            border: none;
+            padding: 18px 45px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 15px;
+            box-shadow: 0 8px 20px rgba(123, 197, 193, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            max-width: 350px;
+            justify-content: center;
+        }
 
         .donate-button:hover {
-            transform: scale(1.03);
-            box-shadow: 0 12px 30px rgba(2, 138, 15, 0.6);
-            background: linear-gradient(45deg, #02C74D, var(--emerald));
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(123, 197, 193, 0.6);
+            background: linear-gradient(45deg, #8FD3D0, var(--accent-teal));
         }
 
         .donate-button:active {
@@ -234,18 +244,27 @@
         }
 
         .payment-method {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 12px 20px;
-            border-radius: 8px;
-            border: 1px solid var(--sapphire);
+            background: rgba(255, 255, 255, 0.7);
+            padding: 14px 22px;
+            border-radius: 10px;
+            border: 1.5px solid var(--soft-lavender);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             font-size: 1rem;
+            font-weight: 500;
             transition: all 0.3s;
             flex: 1;
             min-width: 140px;
             justify-content: center;
+            color: var(--text-dark);
+        }
+
+        .payment-method:hover {
+            background: var(--white);
+            transform: translateY(-3px);
+            border-color: var(--accent-lilac);
+            box-shadow: 0 5px 15px rgba(197, 168, 255, 0.15);
         }
 
         .progress-section {
@@ -255,86 +274,160 @@
         }
 
         .progress-bar {
-            height: 25px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
+            height: 26px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 13px;
             overflow: hidden;
-            margin: 15px 0;
-            border: 2px solid var(--gold);
+            margin: 20px 0;
+            border: 2px solid var(--soft-lavender);
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--emerald), #02C74D);
+            background: linear-gradient(90deg, var(--accent-teal), var(--accent-lilac));
             width: 65%;
-            border-radius: 12px;
+            border-radius: 13px;
             position: relative;
             transition: width 2s ease-in-out;
-        }
-
-        .progress-fill::after {
-            content: '65%';
-            position: absolute;
-            right: 8px;
-            top: 50%;
-            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 15px;
+            font-weight: 700;
             color: white;
-            font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
 
         .contact-info {
             text-align: center;
-            margin: 40px 0;
-            padding: 20px;
-            background: rgba(44, 0, 62, 0.3);
-            border-top: 2px solid var(--gold);
-            border-bottom: 2px solid var(--gold);
+            margin: 50px 0 30px;
+            padding: 25px 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.95));
+            border-top: 3px solid var(--soft-peach);
+            border-bottom: 3px solid var(--soft-peach);
         }
 
         .contact-title {
-            color: var(--gold);
-            font-size: 1.4rem;
-            margin-bottom: 15px;
+            color: var(--accent-teal);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
         }
 
         .bank-details {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 12px;
-            margin: 15px auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 22px;
+            border-radius: 15px;
+            margin: 20px auto;
             max-width: 95%;
-            border: 1px solid var(--sapphire);
+            border: 2px solid var(--soft-lavender);
             text-align: left;
             font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             word-break: break-word;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
         }
 
         footer {
             text-align: center;
-            padding: 25px 15px;
-            background: rgba(0, 0, 0, 0.7);
-            border-top: 2px solid var(--dark-gold);
-            margin-top: 40px;
+            padding: 30px 15px;
+            background: linear-gradient(135deg, var(--soft-peach), var(--soft-yellow));
+            border-top: 3px solid var(--accent-lilac);
+            margin-top: 50px;
+            color: var(--text-dark);
         }
 
         .charity-number {
-            color: var(--dark-marble);
-            font-size: 0.8rem;
-            margin-top: 12px;
-            line-height: 1.4;
+            color: var(--text-gray);
+            font-size: 0.85rem;
+            margin-top: 15px;
+            line-height: 1.5;
+            opacity: 0.8;
+        }
+
+        /* Стили для фото-шапки */
+        .header-with-photo {
+            width: 100%;
+            position: relative;
+            border-bottom: 3px solid var(--soft-peach);
+        }
+
+        .header-photo-container {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            overflow: hidden;
+        }
+
+        .header-background {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .header-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            filter: brightness(0.9) saturate(1.1);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, 
+                rgba(255, 232, 214, 0.4),
+                rgba(216, 243, 220, 0.3));
+        }
+
+        .header-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+            z-index: 2;
+        }
+
+        .header-content .logo {
+            font-size: 2.6rem;
+            color: var(--accent-teal);
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content .tagline {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            text-shadow: 0 1px 5px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Мобильная версия для шапки */
+        @media (max-width: 768px) {
+            .header-photo-container {
+                height: 280px;
+            }
+            
+            .header-content .logo {
+                font-size: 2rem;
+            }
+            
+            .header-content .tagline {
+                font-size: 1.1rem;
+                padding: 0 15px;
+            }
         }
 
         /* Десктопная версия (большие экраны) */
         @media (min-width: 768px) {
-            .header {
-                padding: 30px 0;
-            }
-            
             .logo {
-                font-size: 2.8rem;
-                letter-spacing: 2px;
+                font-size: 2.6rem;
             }
             
             .tagline {
@@ -343,12 +436,12 @@
             
             .emergency-banner {
                 padding: 15px;
-                font-size: 1.3rem;
+                font-size: 1.2rem;
                 width: 90%;
             }
             
             .main-title {
-                font-size: 3rem;
+                font-size: 2.5rem;
                 margin: 40px 0;
             }
             
@@ -367,7 +460,7 @@
             }
             
             .cat-name {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .cat-image {
@@ -382,46 +475,46 @@
             .donation-section::before,
             .donation-section::after {
                 display: block;
-                content: '💎';
+                content: '🐾';
                 position: absolute;
-                font-size: 3rem;
-                animation: float 4s infinite;
+                font-size: 2.5rem;
+                animation: twinkle 3s infinite;
             }
             
             .donation-section::before {
-                top: -25px;
-                left: -25px;
+                top: -20px;
+                left: -20px;
             }
             
             .donation-section::after {
-                bottom: -25px;
-                right: -25px;
-                animation: float 4s infinite reverse;
+                bottom: -20px;
+                right: -20px;
+                animation: twinkle 3s infinite reverse;
             }
             
             .donation-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
             
             .donation-amount {
-                font-size: 3.5rem;
+                font-size: 3rem;
             }
             
             .donate-button {
-                padding: 25px 60px;
-                font-size: 1.8rem;
+                padding: 22px 55px;
+                font-size: 1.6rem;
                 width: auto;
                 max-width: none;
             }
             
             .payment-method {
                 min-width: auto;
-                padding: 15px 25px;
+                padding: 16px 28px;
             }
             
             .bank-details {
-                max-width: 600px;
-                padding: 25px;
+                max-width: 650px;
+                padding: 28px;
                 font-size: 1rem;
             }
             
@@ -430,87 +523,9 @@
             }
         }
 
-/* Стили для фото-шапки */
-.header-with-photo {
-    width: 100%;
-    position: relative;
-    border-bottom: 3px solid var(--gold);
-}
-
-.header-photo-container {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    overflow: hidden;
-}
-
-.header-background {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.header-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    filter: brightness(0.8);
-}
-
-.photo-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, 
-        rgba(44, 0, 62, 0.8), 
-        rgba(15, 82, 186, 0.6));
-}
-
-.header-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 90%;
-    max-width: 800px;
-    z-index: 2;
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-}
-
-.header-content .logo {
-    font-size: 2.8rem;
-    color: var(--gold);
-    margin-bottom: 15px;
-}
-
-.header-content .tagline {
-    font-size: 1.4rem;
-    color: var(--marble);
-}
-
-/* Мобильная версия */
-@media (max-width: 768px) {
-    .header-photo-container {
-        height: 300px;
-    }
-    
-    .header-content .logo {
-        font-size: 2rem;
-    }
-    
-    .header-content .tagline {
-        font-size: 1.1rem;
-        padding: 0 15px;
-    }
-}
-
         @media (min-width: 1024px) {
             .cats-section {
-                gap: 80px;
+                gap: 70px;
             }
         }
 
@@ -522,7 +537,7 @@
             
             .donate-button {
                 font-size: 1.2rem;
-                padding: 15px 30px;
+                padding: 16px 35px;
             }
             
             .payment-method {
@@ -534,26 +549,21 @@
 </head>
 <body>
     <!-- Фото-шапка -->
-<div class="header-with-photo">
-    <div class="header-photo-container">
-        <!-- Фоновое фото -->
-        <div class="header-background">
-            <!-- ТВОЁ ФОТО - ВАЖНО: .jpeg, не .jpg! -->
-            <img src="images/IMG_6495.jpeg" alt="Котик для спасения" class="header-photo">
+    <div class="header-with-photo">
+        <div class="header-photo-container">
+            <div class="header-background">
+                <img src="images/IMG_6495.jpeg" alt="Котик для спасения" class="header-photo">
+                <div class="photo-overlay"></div>
+            </div>
             
-            <!-- Затемнение для текста -->
-            <div class="photo-overlay"></div>
-        </div>
-        
-        <!-- Текст поверх фото -->
-        <div class="header-content">
-            <h1 class="logo">
-                <i class="fas fa-crown"></i> Cat Rescue Foundation
-            </h1>
-            <div class="tagline">Спасение животных — наша благородная миссия</div>
+            <div class="header-content">
+                <h1 class="logo">
+                    <i class="fas fa-crown"></i> Cat Rescue Foundation
+                </h1>
+                <div class="tagline">Спасение животных — наша благородная миссия</div>
+            </div>
         </div>
     </div>
-</div>
 
     <div class="emergency-banner">
         🚨 СРОЧНО! Кошкам-Очкошка требуется пересадка жира для полноценной жизни!
@@ -562,7 +572,6 @@
     <h1 class="main-title">Спасите усатых друзей</h1>
 
     <div class="cats-section">
-        <!-- КОТ 1 -->
         <div class="cat-card">
             <div class="cat-name">Мурлыкас</div>
             <img src="images/cat1.jpg" alt="Кошка Мурлыкас" class="cat-image">
@@ -577,7 +586,6 @@
             </div>
         </div>
 
-        <!-- КОТ 2 -->
         <div class="cat-card">
             <div class="cat-name">Леди Шлюндра</div>
             <img src="images/cat2.jpg" alt="Кошка Леди Шлюндра" class="cat-image">
@@ -595,7 +603,7 @@
 
     <div class="donation-section">
         <h2 class="donation-title">Собираем на пересадку жира</h2>
-        <p style="font-size: 1.1rem; margin: 15px 0;">
+        <p style="font-size: 1.1rem; margin: 15px 0; color: var(--text-gray);">
             Ваше пожертвование подарит шанс на счастливую жизнь!
         </p>
         
@@ -605,9 +613,9 @@
 
         <div class="progress-section">
             <div class="progress-bar">
-                <div class="progress-fill"></div>
+                <div class="progress-fill">65%</div>
             </div>
-            <p>Уже собрано 65% от необходимой суммы</p>
+            <p style="color: var(--text-gray);">Уже собрано 65% от необходимой суммы</p>
         </div>
 
         <button class="donate-button" onclick="donateNow()">
@@ -622,7 +630,7 @@
                 <i class="fab fa-cc-paypal" style="color: #003087;"></i> PayPal
             </div>
             <div class="payment-method">
-                <i class="fas fa-university" style="color: #D4AF37;"></i> Банк
+                <i class="fas fa-university" style="color: var(--accent-teal);"></i> Банк
             </div>
             <div class="payment-method">
                 <i class="fab fa-cc-apple-pay" style="color: #000;"></i> Apple Pay
@@ -641,7 +649,7 @@
             <p><strong>Назначение:</strong> Благотворительное пожертвование на операцию кошкам</p>
         </div>
 
-        <p style="margin-top: 15px; line-height: 1.6;">
+        <p style="margin-top: 15px; line-height: 1.6; color: var(--text-dark);">
             <i class="fas fa-phone"></i> +7 (919) 861-31-77<br>
             <i class="fas fa-envelope"></i> renalkot@rescue.org
         </p>
@@ -657,28 +665,23 @@
             const amounts = [500, 1000, 2500, 5000, 10000];
             const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
             
-            // Анимация
             const button = document.querySelector('.donate-button');
             button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Обработка ${randomAmount} ₽...`;
-            button.style.background = 'linear-gradient(45deg, #FFD700, #D4AF37)';
+            button.style.background = 'linear-gradient(45deg, var(--accent-lilac), #D4B5FF)';
             
-            // Имитация обработки платежа
             setTimeout(() => {
                 button.innerHTML = `<i class="fas fa-check"></i> ${randomAmount} ₽ отправлены!`;
-                button.style.background = 'linear-gradient(45deg, #028A0F, #02C74D)';
+                button.style.background = 'linear-gradient(45deg, var(--accent-teal), #8FD3D0)';
                 
-                // Показать благодарность
                 alert(`🎉 Спасибо за ваше пожертвование в размере ${randomAmount} ₽!\n\nДеньги успешно отправлены Реналю.`);
                 
-                // Восстановить кнопку через 3 секунды
                 setTimeout(() => {
                     button.innerHTML = `<i class="fas fa-gem"></i> Отправить деньги Реналю`;
-                    button.style.background = 'linear-gradient(45deg, var(--emerald), #02C74D)';
+                    button.style.background = 'linear-gradient(45deg, var(--accent-teal), #8FD3D0)';
                 }, 3000);
             }, 2000);
         }
         
-        // Анимация прогресс-бара
         document.addEventListener('DOMContentLoaded', function() {
             const progressFill = document.querySelector('.progress-fill');
             let width = 0;
