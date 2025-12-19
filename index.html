@@ -47,7 +47,7 @@
 
         .header {
             background: linear-gradient(to right, rgba(44, 0, 62, 0.9), rgba(15, 82, 186, 0.8));
-            padding: 30px 0;
+            padding: 20px 0;
             text-align: center;
             border-bottom: 3px solid var(--gold);
             position: relative;
@@ -57,7 +57,7 @@
         .header::after {
             content: '✨';
             position: absolute;
-            font-size: 2rem;
+            font-size: 1.5rem;
             animation: twinkle 3s infinite;
         }
 
@@ -67,56 +67,58 @@
         }
 
         .logo {
-            font-size: 2.8rem;
+            font-size: 1.8rem;
             font-weight: bold;
             color: var(--gold);
             text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            padding: 0 15px;
         }
 
         .logo i {
             color: var(--emerald);
-            margin-right: 15px;
+            margin-right: 10px;
         }
 
         .tagline {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--dark-marble);
             font-style: italic;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            padding: 0 15px;
         }
 
         .emergency-banner {
             background: linear-gradient(90deg, #ff6b6b, #ff8e53);
             color: white;
-            padding: 15px;
+            padding: 12px;
             text-align: center;
-            font-size: 1.3rem;
+            font-size: 1rem;
             font-weight: bold;
             border: 2px solid var(--gold);
-            margin: 20px auto;
-            width: 90%;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+            margin: 15px auto;
+            width: 95%;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
-            0% { box-shadow: 0 0 20px rgba(255, 107, 107, 0.5); }
-            50% { box-shadow: 0 0 40px rgba(255, 107, 107, 0.8); }
-            100% { box-shadow: 0 0 20px rgba(255, 107, 107, 0.5); }
+            0% { box-shadow: 0 0 15px rgba(255, 107, 107, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(255, 107, 107, 0.8); }
+            100% { box-shadow: 0 0 15px rgba(255, 107, 107, 0.5); }
         }
 
         .main-title {
-            font-size: 3rem;
+            font-size: 1.8rem;
             text-align: center;
-            margin: 40px 0;
+            margin: 25px 15px;
             color: var(--gold);
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             position: relative;
-            padding-bottom: 20px;
+            padding-bottom: 15px;
         }
 
         .main-title::after {
@@ -125,147 +127,134 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 200px;
-            height: 3px;
+            width: 150px;
+            height: 2px;
             background: linear-gradient(90deg, transparent, var(--gold), transparent);
         }
 
         .cats-section {
             display: flex;
-            justify-content: center;
-            gap: 50px;
-            flex-wrap: wrap;
-            padding: 0 20px;
-            max-width: 1400px;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            padding: 0 15px;
+            max-width: 800px;
             margin: 0 auto;
         }
 
         .cat-card {
             background: rgba(255, 255, 255, 0.05);
             border: 2px solid var(--gold);
-            border-radius: 20px;
-            padding: 30px;
-            width: 500px;
+            border-radius: 15px;
+            padding: 20px;
+            width: 100%;
+            max-width: 500px;
             backdrop-filter: blur(10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .cat-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(212, 175, 55, 0.2);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.2);
         }
 
         .cat-name {
-            font-size: 2.2rem;
+            font-size: 1.6rem;
             color: var(--gold);
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             font-weight: bold;
         }
 
         .cat-image {
             width: 100%;
-            height: 300px;
+            height: 250px;
             object-fit: cover;
-            border-radius: 15px;
-            border: 3px solid var(--dark-gold);
-            margin-bottom: 25px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+            border-radius: 12px;
+            border: 2px solid var(--dark-gold);
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
 
         .cat-description {
-            font-size: 1.1rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.5;
             color: var(--dark-marble);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: justify;
         }
 
         .medical-info {
             background: rgba(255, 107, 107, 0.1);
-            border-left: 4px solid #ff6b6b;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 10px 10px 0;
+            border-left: 3px solid #ff6b6b;
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
         }
 
         .medical-info h3 {
             color: #ff6b6b;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
         }
 
         .donation-section {
             text-align: center;
-            margin: 50px auto;
-            max-width: 800px;
-            padding: 40px;
+            margin: 40px auto;
+            max-width: 95%;
+            padding: 25px;
             background: linear-gradient(135deg, rgba(15, 82, 186, 0.1), rgba(2, 138, 15, 0.1));
             border: 2px solid var(--sapphire);
-            border-radius: 20px;
+            border-radius: 15px;
             position: relative;
         }
 
-        .donation-section::before {
-            content: '💎';
-            position: absolute;
-            top: -25px;
-            left: -25px;
-            font-size: 3rem;
-            animation: float 4s infinite;
-        }
-
+        .donation-section::before,
         .donation-section::after {
-            content: '💎';
-            position: absolute;
-            bottom: -25px;
-            right: -25px;
-            font-size: 3rem;
-            animation: float 4s infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            display: none; /* Скрываем на мобильных */
         }
 
         .donation-title {
-            font-size: 2.5rem;
+            font-size: 1.6rem;
             color: var(--emerald);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-shadow: 0 0 10px rgba(2, 138, 15, 0.3);
         }
 
         .donation-amount {
-            font-size: 3.5rem;
+            font-size: 2.2rem;
             color: var(--gold);
             font-weight: bold;
-            margin: 30px 0;
-            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            margin: 20px 0;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
         }
 
         .donate-button {
             background: linear-gradient(45deg, var(--emerald), #02C74D);
             color: white;
             border: none;
-            padding: 25px 60px;
-            font-size: 1.8rem;
+            padding: 18px 40px;
+            font-size: 1.4rem;
             font-weight: bold;
-            border-radius: 50px;
+            border-radius: 40px;
             cursor: pointer;
             transition: all 0.3s;
-            margin-top: 20px;
-            box-shadow: 0 10px 30px rgba(2, 138, 15, 0.4);
+            margin-top: 15px;
+            box-shadow: 0 8px 20px rgba(2, 138, 15, 0.4);
             position: relative;
             overflow: hidden;
             display: inline-flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
+            width: 100%;
+            max-width: 350px;
+            justify-content: center;
         }
 
         .donate-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(2, 138, 15, 0.6);
+            transform: scale(1.03);
+            box-shadow: 0 12px 30px rgba(2, 138, 15, 0.6);
             background: linear-gradient(45deg, #02C74D, var(--emerald));
         }
 
@@ -273,58 +262,41 @@
             transform: scale(0.98);
         }
 
-        .donate-button::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
-
-        .donate-button:hover::after {
-            left: 100%;
-        }
-
         .payment-methods {
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
             flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
         }
 
         .payment-method {
             background: rgba(255, 255, 255, 0.1);
-            padding: 15px 25px;
-            border-radius: 10px;
+            padding: 12px 20px;
+            border-radius: 8px;
             border: 1px solid var(--sapphire);
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.1rem;
+            gap: 8px;
+            font-size: 1rem;
             transition: all 0.3s;
-        }
-
-        .payment-method:hover {
-            background: rgba(15, 82, 186, 0.2);
-            transform: translateY(-5px);
+            flex: 1;
+            min-width: 140px;
+            justify-content: center;
         }
 
         .progress-section {
-            margin: 50px auto;
-            max-width: 800px;
+            margin: 40px auto;
+            max-width: 95%;
             text-align: center;
         }
 
         .progress-bar {
-            height: 30px;
+            height: 25px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            border-radius: 12px;
             overflow: hidden;
-            margin: 20px 0;
+            margin: 15px 0;
             border: 2px solid var(--gold);
         }
 
@@ -332,7 +304,7 @@
             height: 100%;
             background: linear-gradient(90deg, var(--emerald), #02C74D);
             width: 65%;
-            border-radius: 15px;
+            border-radius: 12px;
             position: relative;
             transition: width 2s ease-in-out;
         }
@@ -340,17 +312,18 @@
         .progress-fill::after {
             content: '65%';
             position: absolute;
-            right: 10px;
+            right: 8px;
             top: 50%;
             transform: translateY(-50%);
             color: white;
             font-weight: bold;
+            font-size: 0.9rem;
         }
 
         .contact-info {
             text-align: center;
-            margin: 50px 0;
-            padding: 30px;
+            margin: 40px 0;
+            padding: 20px;
             background: rgba(44, 0, 62, 0.3);
             border-top: 2px solid var(--gold);
             border-bottom: 2px solid var(--gold);
@@ -358,47 +331,162 @@
 
         .contact-title {
             color: var(--gold);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
         }
 
         .bank-details {
             background: rgba(0, 0, 0, 0.5);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 20px auto;
-            max-width: 600px;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px auto;
+            max-width: 95%;
             border: 1px solid var(--sapphire);
             text-align: left;
             font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            word-break: break-word;
         }
 
         footer {
             text-align: center;
-            padding: 30px;
+            padding: 25px 15px;
             background: rgba(0, 0, 0, 0.7);
             border-top: 2px solid var(--dark-gold);
-            margin-top: 50px;
+            margin-top: 40px;
         }
 
         .charity-number {
             color: var(--dark-marble);
-            font-size: 0.9rem;
-            margin-top: 15px;
+            font-size: 0.8rem;
+            margin-top: 12px;
+            line-height: 1.4;
         }
 
-        @media (max-width: 1100px) {
-            .cats-section {
-                flex-direction: column;
-                align-items: center;
+        /* Десктопная версия (большие экраны) */
+        @media (min-width: 768px) {
+            .header {
+                padding: 30px 0;
             }
             
-            .cat-card {
+            .logo {
+                font-size: 2.8rem;
+                letter-spacing: 2px;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .emergency-banner {
+                padding: 15px;
+                font-size: 1.3rem;
                 width: 90%;
             }
             
             .main-title {
+                font-size: 3rem;
+                margin: 40px 0;
+            }
+            
+            .cats-section {
+                flex-direction: row;
+                justify-content: center;
+                gap: 50px;
+                padding: 0 20px;
+                max-width: 1400px;
+            }
+            
+            .cat-card {
+                padding: 30px;
+                width: 500px;
+                max-width: 500px;
+            }
+            
+            .cat-name {
                 font-size: 2.2rem;
+            }
+            
+            .cat-image {
+                height: 300px;
+            }
+            
+            .donation-section {
+                max-width: 800px;
+                padding: 40px;
+            }
+            
+            .donation-section::before,
+            .donation-section::after {
+                display: block;
+                content: '💎';
+                position: absolute;
+                font-size: 3rem;
+                animation: float 4s infinite;
+            }
+            
+            .donation-section::before {
+                top: -25px;
+                left: -25px;
+            }
+            
+            .donation-section::after {
+                bottom: -25px;
+                right: -25px;
+                animation: float 4s infinite reverse;
+            }
+            
+            .donation-title {
+                font-size: 2.5rem;
+            }
+            
+            .donation-amount {
+                font-size: 3.5rem;
+            }
+            
+            .donate-button {
+                padding: 25px 60px;
+                font-size: 1.8rem;
+                width: auto;
+                max-width: none;
+            }
+            
+            .payment-method {
+                min-width: auto;
+                padding: 15px 25px;
+            }
+            
+            .bank-details {
+                max-width: 600px;
+                padding: 25px;
+                font-size: 1rem;
+            }
+            
+            .contact-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .cats-section {
+                gap: 80px;
+            }
+        }
+
+        /* Очень маленькие экраны */
+        @media (max-width: 360px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .donate-button {
+                font-size: 1.2rem;
+                padding: 15px 30px;
+            }
+            
+            .payment-method {
+                min-width: 120px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -418,40 +506,40 @@
     <h1 class="main-title">Спасите усатых друзей</h1>
 
     <div class="cats-section">
-    <!-- КОТ 1 -->
-    <div class="cat-card">
-        <div class="cat-name">Мурлыкас</div>
-        <img src="images/cat1.jpg" alt="Кошка Мурлыкас" class="cat-image">
-        <div class="cat-description">
-            Благородный тайская очкошка, потомок королевской линии. 
-            Требуется срочная пересадка жира для восстановления 
-            аристократической осанки и улучшения качества мурлыкания.
+        <!-- КОТ 1 -->
+        <div class="cat-card">
+            <div class="cat-name">Мурлыкас</div>
+            <img src="images/cat1.jpg" alt="Кошка Мурлыкас" class="cat-image">
+            <div class="cat-description">
+                Благородный тайская очкошка, потомок королевской линии. 
+                Требуется срочная пересадка жира для восстановления 
+                аристократической осанки и улучшения качества мурлыкания.
+            </div>
+            <div class="medical-info">
+                <h3>🏥 Медицинское заключение:</h3>
+                <p>Дефицит жира 3-й степени. Без операции прогноз неблагоприятный.</p>
+            </div>
         </div>
-        <div class="medical-info">
-            <h3>🏥 Медицинское заключение:</h3>
-            <p>Дефицит жира 3-й степени. Без операции прогноз неблагоприятный.</p>
-        </div>
-    </div>
 
-    <!-- КОТ 2 -->
-    <div class="cat-card">
-        <div class="cat-name">Леди Шлюндра</div>
-        <img src="images/cat2.jpg" alt="Кошка Леди Шлюндра" class="cat-image">
-        <div class="cat-description">
-            Утонченная британская кошка с изысканными манерами. 
-            Необходима обрезание лишнего жира для 
-            поддержания температурного режима и мягкости шерсти.
-        </div>
-        <div class="medical-info">
-            <h3>🏥 Медицинское заключение:</h3>
-            <p>Нарушение терморегуляции. Требуется срочное вмешательство.</p>
+        <!-- КОТ 2 -->
+        <div class="cat-card">
+            <div class="cat-name">Леди Шлюндра</div>
+            <img src="images/cat2.jpg" alt="Кошка Леди Шлюндра" class="cat-image">
+            <div class="cat-description">
+                Утонченная британская кошка с изысканными манерами. 
+                Необходима обрезание лишнего жира для 
+                поддержания температурного режима и мягкости шерсти.
+            </div>
+            <div class="medical-info">
+                <h3>🏥 Медицинское заключение:</h3>
+                <p>Нарушение терморегуляции. Требуется срочное вмешательство.</p>
+            </div>
         </div>
     </div>
-</div>
 
     <div class="donation-section">
         <h2 class="donation-title">Собираем на пересадку жира</h2>
-        <p style="font-size: 1.3rem; margin: 20px 0;">
+        <p style="font-size: 1.1rem; margin: 15px 0;">
             Ваше пожертвование подарит шанс на счастливую жизнь!
         </p>
         
@@ -472,13 +560,13 @@
 
         <div class="payment-methods">
             <div class="payment-method">
-                <i class="fab fa-cc-visa" style="color: #1a1f71;"></i> Visa/Mastercard
+                <i class="fab fa-cc-visa" style="color: #1a1f71;"></i> Visa/MC
             </div>
             <div class="payment-method">
                 <i class="fab fa-cc-paypal" style="color: #003087;"></i> PayPal
             </div>
             <div class="payment-method">
-                <i class="fas fa-university" style="color: #D4AF37;"></i> Банковский перевод
+                <i class="fas fa-university" style="color: #D4AF37;"></i> Банк
             </div>
             <div class="payment-method">
                 <i class="fab fa-cc-apple-pay" style="color: #000;"></i> Apple Pay
@@ -494,10 +582,10 @@
             <p><strong>Банк:</strong> АО "Тинькофф Банк"</p>
             <p><strong>Номер:</strong> +79198613177</p>
             <p><strong>БИК хуик:</strong> 044525974</p>
-            <p><strong>Назначение платежа:</strong> Благотворительное пожертвование на операцию кошкам</p>
+            <p><strong>Назначение:</strong> Благотворительное пожертвование на операцию кошкам</p>
         </div>
 
-        <p style="margin-top: 20px;">
+        <p style="margin-top: 15px; line-height: 1.6;">
             <i class="fas fa-phone"></i> +7 (919) 861-31-77<br>
             <i class="fas fa-envelope"></i> renalkot@rescue.org
         </p>
