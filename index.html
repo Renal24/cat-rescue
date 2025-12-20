@@ -34,7 +34,121 @@
             overflow-x: hidden;
         }
 
-        /* Анимация звезд */
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 15, 28, 0.95);
+            z-index: 1000;
+            overflow-y: auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            background: var(--dark-card);
+            margin: 50px auto;
+            padding: 0;
+            width: 95%;
+            max-width: 900px;
+            border-radius: 25px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 59, 92, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 45px;
+            height: 45px;
+            background: var(--gradient-red);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .close-modal:hover {
+            transform: rotate(90deg) scale(1.1);
+            box-shadow: 0 0 25px rgba(255, 59, 92, 0.6);
+        }
+
+        .cat-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+        }
+
+        .cat-gallery-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid rgba(0, 194, 255, 0.2);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .cat-gallery-img:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-blue);
+            box-shadow: 0 10px 25px rgba(0, 194, 255, 0.3);
+        }
+
+        .modal-header {
+            background: var(--gradient-red);
+            padding: 40px 30px 30px;
+            position: relative;
+        }
+
+        .modal-cat-name {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 10px;
+            font-weight: 900;
+        }
+
+        .modal-cat-breed {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .modal-section {
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 20px;
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .modal-section-title {
+            color: var(--accent-blue);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Остальные стили остаются как были */
         .stars {
             position: fixed;
             top: 0;
@@ -57,7 +171,6 @@
             50% { opacity: 1; }
         }
 
-        /* Хедер */
         .header-with-photo {
             width: 100%;
             position: relative;
@@ -119,7 +232,6 @@
             opacity: 0.9;
         }
 
-        /* Баннер */
         .emergency-banner {
             background: var(--gradient-red);
             color: white;
@@ -146,7 +258,6 @@
             font-size: 1.8rem;
         }
 
-        /* Основной заголовок */
         .main-title {
             font-size: 2.5rem;
             text-align: center;
@@ -171,7 +282,6 @@
             border-radius: 2px;
         }
 
-        /* Карточки котиков */
         .cats-section {
             display: flex;
             flex-wrap: wrap;
@@ -193,6 +303,7 @@
             border: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
 
         .cat-card::before {
@@ -506,6 +617,20 @@
                 font-size: 1.6rem;
             }
             
+            .modal-content {
+                width: 98%;
+                margin: 20px auto;
+            }
+            
+            .modal-cat-name {
+                font-size: 2rem;
+            }
+            
+            .cat-gallery {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 20px;
+            }
+            
             .donation-title {
                 font-size: 1.8rem;
             }
@@ -536,6 +661,10 @@
                 align-items: center;
             }
             
+            .cat-gallery {
+                grid-template-columns: 1fr;
+            }
+            
             .donate-button {
                 width: 100%;
                 justify-content: center;
@@ -548,6 +677,109 @@
     </style>
 </head>
 <body>
+    <!-- Модальное окно для Мурлыкаса -->
+    <div id="modal-murlykas" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-murlykas')">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <h2 class="modal-cat-name">Мурлыкас</h2>
+                <p class="modal-cat-breed">Благородный тайская очкошка</p>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3 class="modal-section-title">
+                        <i class="fas fa-camera"></i> Галерея фотографий
+                    </h3>
+                    <div class="cat-gallery">
+                        <img src="images/cat1.jpg" alt="Мурлыкас фото 1" class="cat-gallery-img">
+                        <img src="https://images.unsplash.com/photo-1514888286974-6d03bde4ba04?w=400" alt="Мурлыкас фото 2" class="cat-gallery-img">
+                        <img src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?w-400" alt="Мурлыкас фото 3" class="cat-gallery-img">
+                        <img src="https://images.unsplash.com/photo-1595433707802-6b2626ef1c91?w=400" alt="Мурлыкас фото 4" class="cat-gallery-img">
+                        <img src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?w=400" alt="Мурлыкас фото 5" class="cat-gallery-img">
+                        <img src="https://images.unsplash.com/photo-1592194996308-7b43878e84a6?w=400" alt="Мурлыкас фото 6" class="cat-gallery-img">
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">
+                        <i class="fas fa-heartbeat"></i> Медицинская история
+                    </h3>
+                    <p>Дефицит жира 3-й степени. Наблюдается с 2023 года. 
+                    Требуется срочная пересадка жира для восстановления 
+                    аристократической осанки и улучшения качества мурлыкания.</p>
+                    <p><strong>Диагноз:</strong> Гиполипидемия врожденная</p>
+                    <p><strong>Лечение:</strong> Пересадка жировой ткани</p>
+                    <p><strong>Стоимость операции:</strong> 85,000 ₽</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">
+                        <i class="fas fa-info-circle"></i> Характер и особенности
+                    </h3>
+                    <p>Мурлыкас обладает царственным характером, очень ласковый и общительный. 
+                    Любит сидеть на высоких местах и наблюдать за происходящим. 
+                    Обладает невероятно громким и мелодичным мурлыканием.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для Леди Шлюндры -->
+    <div id="modal-shlyundra" class="modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('modal-shlyundra')">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-header">
+                <h2 class="modal-cat-name">Леди Шлюндра</h2>
+                <p class="modal-cat-breed">Утонченная британская кошка</p>
+            </div>
+            
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3 class="modal-section-title">
+                        <i class="fas fa-camera"></i> Галерея фотографий
+                    </h3>
+                    <div class="cat-gallery">
+                        <img src="images/cat2.jpg" alt="Леди Шлюндра фото 1" class="cat-gallery-img">
+                        <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=400" alt="Леди Шлюндра фото 2" class="cat-gallery-img">
+                        <img src="https://images.unsplash.com/photo-1593482892290-5d188b9e59e2?w=400" alt="Леди Шлюндра фото 3" class="cat-gallery-img">
+                        <img src="https://images.unsplash.com/photo-1560114928-40f1f1eb26a0?w=400" alt="Леди Шлюндра фото 4" class="cat-gallery-img">
+                        <img src="https://images.unsplash.com/photo-1571566882372-1598d88abd90?w=400" alt="Леди Шлюндра фото 5" class="cat-gallery-img">
+                        <img src="https://images.unsplash.com/photo-1583086520772-32b615bb1653?w=400" alt="Леди Шлюндра фото 6" class="cat-gallery-img">
+                    </div>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">
+                        <i class="fas fa-heartbeat"></i> Медицинская история
+                    </h3>
+                    <p>Нарушение терморегуляции из-за дефицита жировой ткани. 
+                    Требуется обрезание и перераспределение жира для поддержания 
+                    температурного режима и мягкости шерсти.</p>
+                    <p><strong>Диагноз:</strong> Терморегуляторная дисфункция</p>
+                    <p><strong>Лечение:</strong> Липосакция и трансплантация жира</p>
+                    <p><strong>Стоимость операции:</strong> 92,000 ₽</p>
+                </div>
+                
+                <div class="modal-section">
+                    <h3 class="modal-section-title">
+                        <i class="fas fa-info-circle"></i> Характер и особенности
+                    </h3>
+                    <p>Леди Шлюндра - настоящая аристократка. Очень спокойная, 
+                    с изысканными манерами. Не любит суеты и шума. 
+                    Предпочитает тихие вечера на мягких подушках. 
+                    Обладает невероятно густой и мягкой шерстью.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Анимация звезд -->
     <div class="stars" id="stars"></div>
 
@@ -573,11 +805,11 @@
     <h1 class="main-title">Спасите усатых друзей</h1>
 
     <div class="cats-section">
-        <div class="cat-card">
+        <div class="cat-card" onclick="openModal('modal-murlykas')">
             <div class="cat-name">Мурлыкас</div>
             <img src="images/cat1.jpg" alt="Кошка Мурлыкас" class="cat-image">
             <div class="cat-description">
-                Благородная тайская очкошка, потомок королевской линии. 
+                Благородный тайская очкошка, потомок королевской линии. 
                 Требуется срочная пересадка жира для восстановления 
                 аристократической осанки и улучшения качества мурлыкания.
             </div>
@@ -585,9 +817,12 @@
                 <h3>🏥 Медицинское заключение:</h3>
                 <p>Дефицит жира 3-й степени. Без операции прогноз неблагоприятный.</p>
             </div>
+            <div style="text-align: center; margin-top: 15px; color: var(--accent-blue);">
+                <i class="fas fa-expand-alt"></i> Нажмите для просмотра фотографий
+            </div>
         </div>
 
-        <div class="cat-card">
+        <div class="cat-card" onclick="openModal('modal-shlyundra')">
             <div class="cat-name">Леди Шлюндра</div>
             <img src="images/cat2.jpg" alt="Кошка Леди Шлюндра" class="cat-image">
             <div class="cat-description">
@@ -598,6 +833,9 @@
             <div class="medical-info">
                 <h3>🏥 Медицинское заключение:</h3>
                 <p>Нарушение терморегуляции. Требуется срочное вмешательство.</p>
+            </div>
+            <div style="text-align: center; margin-top: 15px; color: var(--accent-blue);">
+                <i class="fas fa-expand-alt"></i> Нажмите для просмотра фотографий
             </div>
         </div>
     </div>
@@ -662,6 +900,36 @@
     </footer>
 
     <script>
+        // Функции для модальных окон
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Закрытие модального окна при клике вне его
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Закрытие модального окна на Escape
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const modals = document.querySelectorAll('.modal');
+                modals.forEach(modal => {
+                    modal.style.display = 'none';
+                });
+                document.body.style.overflow = 'auto';
+            }
+        });
+
         // Создание звездного фона
         function createStars() {
             const starsContainer = document.getElementById('stars');
