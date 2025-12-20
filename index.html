@@ -748,55 +748,55 @@
         }
 
         .donate-button {
-            background: var(--gradient-secondary);
-            color: var(--bg-main);
-            border: none;
-            padding: 25px 70px;
-            font-size: 1.6rem;
-            font-weight: 800;
-            border-radius: 60px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            margin-top: 35px;
-            box-shadow: 
-                0 20px 40px rgba(255, 59, 140, 0.4),
-                0 0 30px rgba(255, 59, 140, 0.2);
-            display: inline-flex;
-            align-items: center;
-            gap: 20px;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            letter-spacing: 1px;
-        }
+    background: linear-gradient(135deg, #5CA5B1, #6DC5D3, #4A8B95); /* ← НОВЫЙ ГРАДИЕНТ */
+    color: #0B0F1A; /* Тёмный текст для контраста */
+    border: none;
+    padding: 25px 70px;
+    font-size: 1.6rem;
+    font-weight: 800;
+    border-radius: 60px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 35px;
+    box-shadow: 
+        0 20px 40px rgba(92, 165, 177, 0.4), /* ← ЦВЕТ ТЕНИ ПОД ГРАДИЕНТ */
+        0 0 30px rgba(92, 165, 177, 0.2);
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    letter-spacing: 1px;
+}
 
-        .donate-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: left 0.6s;
-            z-index: -1;
-        }
+.donate-button:hover {
+    transform: translateY(-8px) scale(1.05);
+    background: linear-gradient(135deg, #6DC5D3, #5CA5B1, #4A8B95); /* ← ИНВЕРТИРОВАННЫЙ ГРАДИЕНТ ПРИ НАВЕДЕНИИ */
+    box-shadow: 
+        0 30px 60px rgba(92, 165, 177, 0.6),
+        0 0 50px rgba(92, 165, 177, 0.3);
+}
 
-        .donate-button:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 
-                0 30px 60px rgba(255, 59, 140, 0.6),
-                0 0 50px rgba(255, 59, 140, 0.3);
-        }
+.donate-button:active {
+    transform: translateY(-4px) scale(1.02);
+}
 
-        .donate-button:hover::before {
-            left: 100%;
-        }
+.donate-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s;
+    z-index: -1;
+}
 
-        .donate-button:active {
-            transform: translateY(-4px) scale(1.02);
-        }
-
+.donate-button:hover::before {
+    left: 100%;
+}
         /* ===== МЕТОДЫ ОПЛАТЫ ===== */
         .payment-methods {
             display: flex;
