@@ -8,22 +8,13 @@
     <style>
         /* ===== ОБНОВЛЕННЫЕ ПЕРЕМЕННЫЕ ===== */
         :root {
-            --bg-main: #0B0F1A;
-            --bg-card: #1A1F2E;
-            --bg-glass: rgba(255, 255, 255, 0.05);
-            --accent-cyan: #06F7F7;
-            --accent-purple: #9D4EDD;
-            --accent-pink: #FF3B8C;
-            --gradient-primary: linear-gradient(135deg, #06F7F7, #9D4EDD);
-            --gradient-secondary: linear-gradient(135deg, #FF3B8C, #FF6B9D);
-            --gradient-accent: linear-gradient(135deg, #FFD166, #06D6A0);
-            --text-light: #F0F4F8;
-            --text-muted: #94A3B8;
-            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            --shadow-xl: 0 35px 60px -15px rgba(0, 0, 0, 0.6);
-            --border-glow: 0 0 20px rgba(6, 247, 247, 0.3);
-            --glass-blur: blur(16px);
-        }
+    /* ... существующие переменные ... */
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --glass-blur: blur(16px);
+    --glass-glow: 0 0 20px rgba(92, 165, 177, 0.15);
+}
 
         /* ===== БАЗОВЫЕ СТИЛИ ===== */
         * {
@@ -538,50 +529,56 @@
         }
 
         .cat-card {
-            background: var(--bg-card);
-            border-radius: 28px;
-            padding: 35px;
-            width: 100%;
-            max-width: 520px;
-            box-shadow: var(--shadow-xl);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-        }
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border-radius: 24px;
+    padding: 30px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: var(--glass-shadow);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid var(--glass-border);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
 
-        .cat-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: var(--gradient-primary);
-            z-index: 1;
-        }
+.cat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(92, 165, 177, 0.5), 
+        transparent);
+}
 
-        .cat-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(6, 247, 247, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(157, 78, 221, 0.05) 0%, transparent 50%);
-            pointer-events: none;
-        }
+.cat-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, 
+            rgba(92, 165, 177, 0.1) 0%, 
+            transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
 
-        .cat-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 
-                var(--shadow-xl),
-                0 0 40px rgba(6, 247, 247, 0.2);
-            border-color: rgba(6, 247, 247, 0.3);
-        }
+.cat-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 
+        var(--glass-shadow),
+        var(--glass-glow);
+    border-color: rgba(92, 165, 177, 0.3);
+    backdrop-filter: blur(20px);
+}
 
         .cat-name {
             font-size: 2rem;
@@ -644,30 +641,49 @@
 
         /* ===== СОВРЕМЕННАЯ СЕКЦИЯ ДОНАТОВ ===== */
         .donation-section {
-            text-align: center;
-            margin: 80px auto;
-            max-width: 95%;
-            padding: 50px;
-            background: var(--bg-card);
-            border-radius: 32px;
-            position: relative;
-            box-shadow: var(--shadow-xl);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            overflow: hidden;
-        }
+    text-align: center;
+    margin: 80px auto;
+    max-width: 95%;
+    padding: 50px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    border-radius: 32px;
+    position: relative;
+    box-shadow: var(--glass-shadow);
+    border: 1px solid var(--glass-border);
+    overflow: hidden;
+}
 
-        .donation-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: 
-                radial-gradient(circle at 30% 30%, rgba(6, 247, 247, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 70% 70%, rgba(157, 78, 221, 0.08) 0%, transparent 50%);
-            z-index: -1;
-        }
+.donation-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 30%, 
+            rgba(92, 165, 177, 0.1) 0%, 
+            transparent 50%),
+        radial-gradient(circle at 70% 70%, 
+            rgba(157, 78, 221, 0.1) 0%, 
+            transparent 50%);
+    z-index: -1;
+}
+
+.donation-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(92, 165, 177, 0.3), 
+        rgba(157, 78, 221, 0.3), 
+        transparent);
+}
 
         .donation-title {
             font-size: 2.5rem;
@@ -807,26 +823,48 @@
         }
 
         .payment-method {
-            background: var(--bg-glass);
-            backdrop-filter: blur(10px);
-            padding: 20px 32px;
-            border-radius: 16px;
-            border: 1px solid rgba(6, 247, 247, 0.2);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 1.15rem;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            color: var(--text-light);
-        }
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    padding: 20px 32px;
+    border-radius: 16px;
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--text-light);
+    position: relative;
+    overflow: hidden;
+}
 
-        .payment-method:hover {
-            background: rgba(6, 247, 247, 0.15);
-            transform: translateY(-8px);
-            border-color: var(--accent-cyan);
-            box-shadow: 0 15px 30px rgba(6, 247, 247, 0.2);
-        }
+.payment-method::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(92, 165, 177, 0.1), 
+        transparent);
+    transition: left 0.5s;
+}
+
+.payment-method:hover {
+    background: rgba(92, 165, 177, 0.15);
+    transform: translateY(-8px);
+    border-color: rgba(92, 165, 177, 0.3);
+    box-shadow: 
+        0 15px 30px rgba(0, 0, 0, 0.2),
+        0 0 20px rgba(92, 165, 177, 0.2);
+}
+
+.payment-method:hover::before {
+    left: 100%;
+}
 
         /* ===== КОНТАКТНАЯ ИНФОРМАЦИЯ ===== */
         .contact-info {
@@ -862,21 +900,35 @@
         }
 
         .bank-details {
-            background: var(--bg-glass);
-            backdrop-filter: blur(15px);
-            padding: 35px;
-            border-radius: 24px;
-            margin: 35px auto;
-            max-width: 95%;
-            border: 1px solid rgba(157, 78, 221, 0.3);
-            text-align: left;
-            font-family: 'JetBrains Mono', 'Courier New', monospace;
-            font-size: 1.15rem;
-            word-break: break-word;
-            box-shadow: var(--shadow-lg);
-            position: relative;
-            z-index: 1;
-        }
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    padding: 35px;
+    border-radius: 24px;
+    margin: 35px auto;
+    max-width: 95%;
+    border: 1px solid var(--glass-border);
+    text-align: left;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 1.15rem;
+    word-break: break-word;
+    box-shadow: var(--glass-shadow);
+    position: relative;
+    z-index: 1;
+}
+
+.bank-details::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 10% 20%, 
+            rgba(92, 165, 177, 0.05) 0%, 
+            transparent 50%);
+    z-index: -1;
+}
 
         .bank-details p {
             margin: 18px 0;
@@ -978,41 +1030,111 @@
         }
 
         @media (max-width: 768px) {
-    .header-photo-container { 
-        height: 400px; 
-        -webkit-mask-image: linear-gradient(to bottom, 
-            rgba(0,0,0,1) 70%, 
-            rgba(0,0,0,0) 100%);
-        mask-image: linear-gradient(to bottom, 
-            rgba(0,0,0,1) 70%, 
-            rgba(0,0,0,0) 100%);
+    .cat-card,
+    .search-container,
+    .donation-section,
+    .payment-method,
+    .bank-details,
+    .emergency-banner,
+    .modal-section {
+        backdrop-filter: blur(12px); /* Меньший blur на мобильных */
     }
+}
     .logo { 
         font-size: 2.8rem; 
         color: #35636B;
         animation: float 3s ease-in-out infinite;
     }
     .main-title { font-size: 2.2rem; margin: 40px 15px; }
-    .emergency-banner { 
-        font-size: 1.1rem; 
-        padding: 18px 18px 18px 60px;
-        margin: 25px auto;
-    }
-    .emergency-banner::before { left: 20px; }
+    .emergency-banner {
+    background: rgba(92, 165, 177, 0.15);
+    backdrop-filter: var(--glass-blur);
+    color: var(--text-light);
+    padding: 22px 40px;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: 20px;
+    margin: 35px auto;
+    width: 92%;
+    max-width: 1100px;
+    box-shadow: var(--glass-shadow);
+    border: 1px solid rgba(92, 165, 177, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.emergency-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(92, 165, 177, 0.5), 
+        rgba(255, 59, 140, 0.5), 
+        transparent);
 }       
             .search-container {
-                padding: 18px 22px;
-                height: auto;
-                flex-direction: row;
-                gap: 15px;
-                margin: 20px auto 30px auto;
-            }
-            
-            .search-text {
-                font-size: 1.2rem;
-                padding: 14px 18px;
-                height: 48px;
-            }
+    max-width: 1000px;
+    margin: 25px auto 35px auto;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    padding: 20px 28px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    height: 72px;
+    box-shadow: var(--glass-shadow);
+    border: 1px solid var(--glass-border);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.search-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(135deg, 
+            rgba(92, 165, 177, 0.05) 0%, 
+            rgba(157, 78, 221, 0.05) 100%);
+    z-index: -1;
+}
+
+.search-container:hover {
+    border-color: rgba(92, 165, 177, 0.3);
+    box-shadow: 
+        var(--glass-shadow),
+        var(--glass-glow);
+    transform: translateY(-2px);
+    backdrop-filter: blur(20px);
+}
+
+.search-text {
+    flex: 1;
+    font-size: 1.3rem;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 16px 22px;
+    border-radius: 16px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(92, 165, 177, 0.15);
+    color: var(--text-light);
+    overflow: hidden;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
             
             .search-btn {
                 padding: 12px 28px;
@@ -1151,8 +1273,30 @@
             }
             
             .modal-section {
-                padding: 20px;
-            }
+    margin-bottom: 35px;
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    padding: 30px;
+    border-radius: 24px;
+    border-left: 5px solid var(--accent-cyan);
+    border: 1px solid var(--glass-border);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(92, 165, 177, 0.3), 
+        transparent);
+}
             
             .custom-alert {
                 max-width: 90%;
