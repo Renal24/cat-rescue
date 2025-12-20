@@ -694,6 +694,43 @@
                 flex-direction: column;
             }
         }
+
+        /* ========== КРЕАТИВНЫЕ УВЕДОМЛЕНИЯ ========== */
+.custom-alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+    color: white;
+    padding: 20px 25px;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    display: none;
+    max-width: 350px;
+    animation: slideIn 0.5s ease-out;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.custom-alert-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+/* ========== КОНЕЦ УВЕДОМЛЕНИЙ ========== */
+        
     </style>
 </head>
 <body>
@@ -967,29 +1004,57 @@
         }
 
         function donateNow() {
-            const amounts = [500, 1000, 2500, 5000, 10000];
-            const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
-            
-            const button = document.querySelector('.donate-button');
-            button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Обработка ${randomAmount} ₽...`;
-            button.style.background = 'var(--gradient-purple)';
-            
-            setTimeout(() => {
-                button.innerHTML = `<i class="fas fa-check"></i> ${randomAmount} ₽ отправлены!`;
-                button.style.background = 'var(--gradient-blue)';
-                
-                // Создаем эффект конфетти
-                createConfetti();
-                
-                alert(`🎉 Спасибо за ваше пожертвование в размере ${randomAmount} ₽!\n\nДеньги успешно отправлены Реналю.`);
-                
-                setTimeout(() => {
-                    button.innerHTML = `<i class="fas fa-gem"></i> Отправить деньги Реналю`;
-                    button.style.background = 'var(--gradient-red)';
-                }, 3000);
-            }, 2000);
-        }
+    const amounts = [500, 1000, 2500, 5000, 10000];
+    const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
+    
+    const button = document.querySelector('.donate-button');
+    button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Обработка ${randomAmount} ₽...`;
+    button.style.background = 'var(--gradient-purple)';
+    
+    // Креативное уведомление вместо alert()
+    setTimeout(() => {
+        button.innerHTML = `<i class="fas fa-check"></i> ${randomAmount} ₽ отправлены!`;
+        button.style.background = 'var(--gradient-blue)';
         
+        // Показываем креативное уведомление
+        showCreativeAlert(randomAmount);
+        
+        // Эффект конфетти
+        createConfetti();
+        
+        setTimeout(() => {
+            button.innerHTML = `<i class="fas fa-gem"></i> Отправить деньги Реналю`;
+            button.style.background = 'var(--gradient-red)';
+        }, 3000);
+    }, 2000);
+}
+        // Новая функция для креативного уведомления
+function showCreativeAlert(amount) {
+    const messages = [
+        `Ваши ${amount} ₽ уже летят к Реналю! 🚀`,
+        `${amount} ₽ подарили котику надежду! ❤️`,
+        `Вы герой! ${amount} ₽ спасут жизнь! 🦸‍♂️`,
+        `Мурлыканье усилено на ${amount}%! 😻`,
+        `Котики говорят спасибо за ${amount} ₽! 🐾`
+    ];
+    
+    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    const alertDiv = document.getElementById('customAlert');
+    const messageSpan = document.getElementById('alertMessage');
+    
+    messageSpan.textContent = randomMessage;
+    alertDiv.style.display = 'block';
+    
+    // Автоматическое скрытие через 5 секунд
+    setTimeout(() => {
+        alertDiv.style.display = 'none';
+    }, 5000);
+    
+    // Можно кликнуть чтобы закрыть
+    alertDiv.onclick = function() {
+        this.style.display = 'none';
+    };
+}
         // Эффект конфетти
         function createConfetti() {
             const colors = ['#FF3B5C', '#00C2FF', '#9D4EDD', '#FFD700', '#00FF87'];
@@ -1034,6 +1099,17 @@
                 }
             }, 30);
         });
+
+        <!-- Креативное уведомление -->
+<div id="customAlert" class="custom-alert">
+    <div class="custom-alert-content">
+        <div style="font-size: 2rem;">🎉</div>
+        <div>
+            <h3 style="margin: 0 0 5px 0; font-size: 1.2rem;">Спасибо!</h3>
+            <p style="margin: 0; font-size: 0.95rem;" id="alertMessage"></p>
+        </div>
+    </div>
+</div>
     </script>
 </body>
 </html>
