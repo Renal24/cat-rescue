@@ -866,6 +866,7 @@
         </div>
     </div>
 
+    <!-- Баннер -->
     <div class="emergency-banner">
         СРОЧНО! Кошкам-Очкошка требуется пересадка жира для полноценной жизни!
     </div>
@@ -1030,7 +1031,6 @@
                 confetti.style.pointerEvents = 'none';
                 document.body.appendChild(confetti);
                 
-                // Анимация падения
                 const animation = confetti.animate([
                     { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
                     { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
@@ -1060,12 +1060,10 @@
             messageSpan.textContent = randomMessage;
             alertDiv.style.display = 'block';
             
-            // Автоматическое скрытие через 5 секунд
             setTimeout(() => {
                 alertDiv.style.display = 'none';
             }, 5000);
             
-            // Можно кликнуть чтобы закрыть
             alertDiv.onclick = function() {
                 this.style.display = 'none';
             };
@@ -1080,15 +1078,12 @@
             button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Обработка ${randomAmount} ₽...`;
             button.style.background = 'var(--gradient-purple)';
             
-            // Креативное уведомление
             setTimeout(() => {
                 button.innerHTML = `<i class="fas fa-check"></i> ${randomAmount} ₽ отправлены!`;
                 button.style.background = 'var(--gradient-blue)';
                 
-                // Показываем креативное уведомление
                 showCreativeAlert(randomAmount);
                 
-                // Эффект конфетти
                 createConfetti();
                 
                 setTimeout(() => {
@@ -1098,6 +1093,7 @@
             }, 2000);
         }
         
+        // Инициализация при загрузке страницы
         document.addEventListener('DOMContentLoaded', function() {
             createStars();
             
