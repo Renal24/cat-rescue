@@ -240,29 +240,18 @@
         }
 
         /* Обновляем стили для шапки */
+/* Замените стили .header-photo-container */
 .header-photo-container {
     position: relative;
     width: 100%;
     height: 500px;
     overflow: hidden;
-    -webkit-mask-image: linear-gradient(
-        to bottom,
-        rgba(0,0,0,1) 0%,
-        rgba(0,0,0,1) 50%,
-        rgba(0,0,0,0.7) 70%,
-        rgba(0,0,0,0.3) 85%,
-        rgba(0,0,0,0) 100%
-    );
-    mask-image: linear-gradient(
-        to bottom,
-        rgba(0,0,0,1) 0%,
-        rgba(0,0,0,1) 50%,
-        rgba(0,0,0,0.7) 70%,
-        rgba(0,0,0,0.3) 85%,
-        rgba(0,0,0,0) 100%
-    );
+    /* Убираем старый маск-градиент полностью */
+    -webkit-mask-image: none;
+    mask-image: none;
 }
 
+/* Обновляем фото */
 .header-photo {
     width: 100%;
     height: 100%;
@@ -271,10 +260,18 @@
     filter: brightness(0.4) saturate(1.2);
     transform: scale(1.05);
     transition: transform 10s ease;
+    /* Добавляем градиентное затемнение прямо на фото */
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 50%,
+        var(--bg-main) 100%
+    );
 }
 
-/* Добавляем градиентную маску */
-.header-photo-mask {
+/* Создаем псевдоэлемент для градиента */
+.header-photo::after {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -283,12 +280,13 @@
     background: linear-gradient(
         to bottom,
         transparent 0%,
-        transparent 50%,
+        transparent 40%,
         var(--bg-main) 100%
     );
-    z-index: 1;
+    pointer-events: none;
 }
 
+/* Обновляем оверлей */
 .header-overlay {
     position: absolute;
     top: 0;
@@ -297,10 +295,10 @@
     height: 100%;
     background: linear-gradient(
         to bottom,
-        rgba(11, 15, 26, 0.8) 0%,
-        rgba(11, 15, 26, 0.4) 30%,
-        rgba(11, 15, 26, 0.9) 70%,
-        rgba(11, 15, 26, 1) 100%
+        rgba(11, 15, 26, 0.7) 0%,
+        rgba(11, 15, 26, 0.3) 30%,
+        rgba(11, 15, 26, 0.1) 50%,
+        transparent 100%
     );
     z-index: 2;
 }
