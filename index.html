@@ -213,17 +213,11 @@
         }
 
         .logo {
-    font-size: 3.5rem;
-    background: linear-gradient(135deg, 
-        rgba(255, 59, 92, 0.8),  /* ← 0.8 = 80% непрозрачности */
-        rgba(255, 107, 139, 0.8)); /* ← здесь тоже 0.8 */
+    background: var(--gradient-red);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: rgba(255, 255, 255, 0.8); /* ← Белый с прозрачностью */
     background-clip: text;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    text-transform: uppercase;
+    /* ... */
 }
 
         .tagline {
