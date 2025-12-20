@@ -665,14 +665,14 @@
             }
         }
 
-        @media (min-width: 769px) {
+@media (min-width: 769px) {
     .header-photo-container {
-        height: 530px; /* Было 450px, добавили 80px */
-        margin-top: 0; /* Убираем margin-top если был */
+        padding-top: 80px; /* Добавляем отступ сверху */
+        height: 530px; /* 450px + 80px = 530px */
     }
     
     .header-photo {
-        margin-top: 80px; /* Опускаем фото внутри контейнера */
+        margin-top: 0; /* Не нужно, если используем padding */
     }
 }
 
