@@ -269,6 +269,76 @@
             font-size: 1.8rem;
         }
 
+        /* Печатающийся текст */
+        .typing-container {
+            background: #2D3748;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 25px auto;
+            width: 95%;
+            max-width: 1000px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-icon {
+            font-size: 1.8rem;
+            color: var(--accent-blue);
+            animation: pulse 2s infinite;
+        }
+
+        .typing-text {
+            flex: 1;
+            font-size: 1.3rem;
+            font-weight: 500;
+            min-height: 32px;
+            font-family: 'Courier New', monospace;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 194, 255, 0.2);
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background: var(--accent-blue);
+            animation: blink 1s infinite;
+            margin-left: 2px;
+            height: 1.2em;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .search-button {
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .search-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(157, 78, 221, 0.3);
+        }
+
         /* Заголовок */
         .main-title {
             font-size: 2.5rem;
@@ -656,6 +726,22 @@
                 padding: 15px 15px 15px 50px;
             }
             
+            .typing-container {
+                flex-direction: column;
+                padding: 15px;
+                gap: 10px;
+            }
+            
+            .typing-text {
+                width: 100%;
+                font-size: 1.1rem;
+            }
+            
+            .search-button {
+                width: 100%;
+                text-align: center;
+            }
+            
             .main-title {
                 font-size: 2rem;
             }
@@ -871,6 +957,16 @@
         СРОЧНО! Кошкам-Очкошка требуется пересадка жира для полноценной жизни!
     </div>
 
+    <!-- Печатающийся текст -->
+    <div class="typing-container">
+        <div class="search-icon">🔍</div>
+        <div class="typing-text">
+            <span id="typed-text"></span>
+            <span class="cursor"></span>
+        </div>
+        <div class="search-button" onclick="searchHelp()">Найти помощь</div>
+    </div>
+
     <h1 class="main-title">Спасите усатых друзей</h1>
 
     <div class="cats-section">
@@ -1044,20 +1140,16 @@
         }
 
         // Креативное уведомление
-        function showCreativeAlert(amount) {
-            const messages = [
-                `Ваши ${amount} ₽ уже летят к Реналю! 🚀`,
-                `${amount} ₽ подарили котику надежду! ❤️`,
-                `Вы герой! ${amount} ₽ спасут жизнь! 🦸‍♂️`,
-                `Мурлыканье усилено на ${amount}%! 😻`,
-                `Котики говорят спасибо за ${amount} ₽! 🐾`
-            ];
-            
-            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+        function showCreativeAlert(message) {
             const alertDiv = document.getElementById('customAlert');
             const messageSpan = document.getElementById('alertMessage');
             
-            messageSpan.textContent = randomMessage;
+            if (!alertDiv || !messageSpan) {
+                alert(message);
+                return;
+            }
+            
+            messageSpan.textContent = message;
             alertDiv.style.display = 'block';
             
             setTimeout(() => {
@@ -1082,7 +1174,16 @@
                 button.innerHTML = `<i class="fas fa-check"></i> ${randomAmount} ₽ отправлены!`;
                 button.style.background = 'var(--gradient-blue)';
                 
-                showCreativeAlert(randomAmount);
+                const messages = [
+                    `Ваши ${randomAmount} ₽ уже летят к Реналю! 🚀`,
+                    `${randomAmount} ₽ подарили котику надежду! ❤️`,
+                    `Вы герой! ${randomAmount} ₽ спасут жизнь! 🦸‍♂️`,
+                    `Мурлыканье усилено на ${randomAmount}%! 😻`,
+                    `Котики говорят спасибо за ${randomAmount} ₽! 🐾`
+                ];
+                
+                const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                showCreativeAlert(randomMessage);
                 
                 createConfetti();
                 
@@ -1091,6 +1192,69 @@
                     button.style.background = 'var(--gradient-red)';
                 }, 3000);
             }, 2000);
+        }
+        
+        // Фразы для печатающегося текста
+        const typingPhrases = [
+            "Хочу помочь бедным котикам?",
+            "Когда Реналь починит свою газель?",
+            "Лучшие матери кошек, Диана...",
+            "Сколько жира нужно кошке для счастья?",
+            "Почему очкошки такие благородные?",
+            "Мурлыкание лечит душу, а жир - тело",
+            "Ищем: волонтеров с золотыми руками",
+            "Нужен механик для газели 406",
+            "Диана - кошачий психолог №1",
+            "Рита знает все о британских кошках",
+            "Спасение усатых - наша миссия",
+            "Каждый рубль = кошачье мурлыканье"
+        ];
+
+        let currentPhraseIndex = 0;
+        let currentCharIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function typeText() {
+            const typedTextElement = document.getElementById('typed-text');
+            if (!typedTextElement) return;
+            
+            const currentPhrase = typingPhrases[currentPhraseIndex];
+            
+            if (isDeleting) {
+                typedTextElement.textContent = currentPhrase.substring(0, currentCharIndex - 1);
+                currentCharIndex--;
+                typingSpeed = 50;
+            } else {
+                typedTextElement.textContent = currentPhrase.substring(0, currentCharIndex + 1);
+                currentCharIndex++;
+                typingSpeed = 100;
+            }
+            
+            if (!isDeleting && currentCharIndex === currentPhrase.length) {
+                typingSpeed = 1500;
+                isDeleting = true;
+            } else if (isDeleting && currentCharIndex === 0) {
+                isDeleting = false;
+                currentPhraseIndex = (currentPhraseIndex + 1) % typingPhrases.length;
+                typingSpeed = 500;
+            }
+            
+            setTimeout(typeText, typingSpeed);
+        }
+
+        // Функция для кнопки поиска
+        function searchHelp() {
+            const searchBtn = document.querySelector('.search-button');
+            if (searchBtn) {
+                searchBtn.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    searchBtn.style.transform = '';
+                }, 200);
+                
+                const randomCat = Math.random() > 0.5 ? 'Мурлыкас' : 'Леди Шлюндра';
+                showCreativeAlert(`🔍 Ищем помощь для ${randomCat}...`);
+            }
         }
         
         // Инициализация при загрузке страницы
@@ -1108,6 +1272,9 @@
                     progressFill.textContent = width + '%';
                 }
             }, 30);
+            
+            // Запускаем печатающийся текст через 1 секунду
+            setTimeout(typeText, 1000);
         });
     </script>
 </body>
