@@ -233,12 +233,13 @@
 }
 
         .tagline {
-            font-size: 1.3rem;
-            color: var(--text-gray);
-            font-style: italic;
-            margin-bottom: 20px;
-            opacity: 0.9;
-        }
+    font-size: 1rem; /* ← Уменьшаем (было 1.3rem) */
+    color: var(--text-gray);
+    font-style: italic;
+    margin-bottom: 10px; /* ← Уменьшаем отступ снизу */
+    opacity: 0.9;
+    margin-top: -10px; /* ← Поднимаем вверх (минус поднимает) */
+}
 
         .emergency-banner {
             background: var(--gradient-red);
