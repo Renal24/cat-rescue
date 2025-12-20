@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cat Rescue Foundation | Спаси кота</title>
+    <title>Meow Mission | Спасение котиков</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        /* ===== ОБНОВЛЕННЫЕ ПЕРЕМЕННЫЕ ===== */
         :root {
-            --dark-bg: #0A0F1C;
-            --dark-card: #1A1F2E;
-            --accent-red: #FF3B5C;
-            --accent-blue: #00C2FF;
+            --bg-main: #0B0F1A;
+            --bg-card: #1A1F2E;
+            --bg-glass: rgba(255, 255, 255, 0.05);
+            --accent-cyan: #06F7F7;
             --accent-purple: #9D4EDD;
-            --text-light: #E2E8F0;
-            --text-gray: #94A3B8;
-            --gradient-red: linear-gradient(135deg, #FF3B5C, #FF6B8B);
-            --gradient-blue: linear-gradient(135deg, #00C2FF, #4DABF7);
-            --gradient-purple: linear-gradient(135deg, #9D4EDD, #C77DFF);
+            --accent-pink: #FF3B8C;
+            --gradient-primary: linear-gradient(135deg, #06F7F7, #9D4EDD);
+            --gradient-secondary: linear-gradient(135deg, #FF3B8C, #FF6B9D);
+            --gradient-accent: linear-gradient(135deg, #FFD166, #06D6A0);
+            --text-light: #F0F4F8;
+            --text-muted: #94A3B8;
+            --shadow-lg: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 35px 60px -15px rgba(0, 0, 0, 0.6);
+            --border-glow: 0 0 20px rgba(6, 247, 247, 0.3);
+            --glass-blur: blur(16px);
         }
 
+        /* ===== БАЗОВЫЕ СТИЛИ ===== */
         * {
             margin: 0;
             padding: 0;
@@ -26,15 +33,33 @@
         }
 
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background: var(--dark-bg);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(6, 247, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(157, 78, 221, 0.06) 0%, transparent 50%),
+                var(--bg-main);
             color: var(--text-light);
             min-height: 100vh;
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Модальное окно */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(6, 247, 247, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(157, 78, 221, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        /* ===== СОВРЕМЕННЫЕ МОДАЛЬНЫЕ ОКНА ===== */
         .modal {
             display: none;
             position: fixed;
@@ -42,113 +67,171 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(10, 15, 28, 0.95);
+            background: rgba(11, 15, 26, 0.92);
+            backdrop-filter: var(--glass-blur);
             z-index: 1000;
             overflow-y: auto;
-            backdrop-filter: blur(10px);
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         .modal-content {
-            background: var(--dark-card);
-            margin: 50px auto;
+            background: var(--bg-card);
+            margin: 40px auto;
             padding: 0;
-            width: 95%;
-            max-width: 900px;
-            border-radius: 25px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-            border: 2px solid rgba(255, 59, 92, 0.3);
+            width: 92%;
+            max-width: 1000px;
+            border-radius: 28px;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
+            transform: translateY(20px);
+            animation: slideUp 0.5s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            to { transform: translateY(0); }
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
         }
 
         .close-modal {
             position: absolute;
             top: 25px;
             right: 25px;
-            width: 45px;
-            height: 45px;
-            background: var(--gradient-red);
-            border: none;
+            width: 48px;
+            height: 48px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            color: white;
-            font-size: 1.5rem;
+            color: var(--text-light);
+            font-size: 1.4rem;
             cursor: pointer;
             z-index: 10;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .close-modal:hover {
+            background: var(--accent-pink);
             transform: rotate(90deg) scale(1.1);
-            box-shadow: 0 0 25px rgba(255, 59, 92, 0.6);
+            box-shadow: 0 0 25px rgba(255, 59, 140, 0.4);
         }
 
+        /* ===== ГАЛЕРЕЯ В МОДАЛКЕ ===== */
         .cat-gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            padding: 32px;
         }
 
         .cat-gallery-img {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            border-radius: 15px;
-            border: 2px solid rgba(0, 194, 255, 0.2);
-            transition: all 0.3s;
+            border-radius: 20px;
+            border: 2px solid rgba(6, 247, 247, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            filter: brightness(0.95) contrast(1.05);
         }
 
         .cat-gallery-img:hover {
-            transform: scale(1.05);
-            border-color: var(--accent-blue);
-            box-shadow: 0 10px 25px rgba(0, 194, 255, 0.3);
+            transform: scale(1.05) translateY(-5px);
+            border-color: var(--accent-cyan);
+            box-shadow: 
+                0 15px 35px rgba(6, 247, 247, 0.25),
+                inset 0 0 30px rgba(6, 247, 247, 0.1);
+            filter: brightness(1.1);
         }
 
         .modal-header {
-            background: var(--gradient-red);
-            padding: 40px 30px 30px;
+            background: linear-gradient(135deg, rgba(6, 247, 247, 0.1), rgba(157, 78, 221, 0.1));
+            padding: 50px 40px 35px;
             position: relative;
+            overflow: hidden;
+        }
+
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(6, 247, 247, 0.15) 0%, transparent 70%),
+                radial-gradient(circle at 70% 80%, rgba(157, 78, 221, 0.15) 0%, transparent 70%);
         }
 
         .modal-cat-name {
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 10px;
-            font-weight: 900;
+            font-size: 3rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            position: relative;
+            z-index: 1;
         }
 
         .modal-cat-breed {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.3rem;
+            color: var(--text-muted);
             font-style: italic;
+            position: relative;
+            z-index: 1;
         }
 
         .modal-body {
-            padding: 30px;
+            padding: 40px;
         }
 
         .modal-section {
-            margin-bottom: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
-            border-radius: 20px;
-            border-left: 4px solid var(--accent-blue);
+            margin-bottom: 35px;
+            background: var(--bg-glass);
+            backdrop-filter: var(--glass-blur);
+            padding: 30px;
+            border-radius: 24px;
+            border-left: 5px solid var(--accent-cyan);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-section:hover {
+            transform: translateX(5px);
         }
 
         .modal-section-title {
-            color: var(--accent-blue);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            color: var(--accent-cyan);
+            font-size: 1.4rem;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-weight: 600;
         }
 
-        /* Звезды */
+        /* ===== ЗВЕЗДНЫЙ ФОН ===== */
         .stars {
             position: fixed;
             top: 0;
@@ -161,40 +244,50 @@
 
         .star {
             position: absolute;
-            background: white;
+            background: linear-gradient(45deg, #fff, var(--accent-cyan));
             border-radius: 50%;
-            animation: twinkle 5s infinite;
+            animation: twinkle 4s infinite;
         }
 
         @keyframes twinkle {
-            0%, 100% { opacity: 0.1; }
-            50% { opacity: 1; }
+            0%, 100% { 
+                opacity: 0.2;
+                transform: scale(1);
+            }
+            50% { 
+                opacity: 1;
+                transform: scale(1.2);
+            }
         }
 
-        /* Шапка */
+        /* ===== СОВРЕМЕННАЯ ШАПКА ===== */
         .header-with-photo {
             width: 100%;
             position: relative;
             overflow: hidden;
+            border-radius: 0 0 40px 40px;
+            box-shadow: var(--shadow-lg);
         }
 
         .header-photo-container {
             position: relative;
             width: 100%;
-            height: 450px;
-            -webkit-mask-image: linear-gradient(to bottom, 
-                rgba(0,0,0,1) 70%, 
-                rgba(0,0,0,0) 100%);
-            mask-image: linear-gradient(to bottom, 
-                rgba(0,0,0,1) 70%, 
-                rgba(0,0,0,0) 100%);
+            height: 500px;
+            overflow: hidden;
         }
 
         .header-photo {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.4) contrast(1.2);
+            object-position: center 30%;
+            filter: brightness(0.4) saturate(1.2);
+            transform: scale(1.05);
+            transition: transform 10s ease;
+        }
+
+        .header-with-photo:hover .header-photo {
+            transform: scale(1.08);
         }
 
         .header-overlay {
@@ -203,190 +296,252 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, 
-                rgba(10, 15, 28, 0.8),
-                rgba(10, 15, 28, 0.95));
+            background: linear-gradient(
+                to bottom,
+                rgba(11, 15, 26, 0.8) 0%,
+                rgba(11, 15, 26, 0.9) 50%,
+                rgba(11, 15, 26, 0.95) 100%
+            );
         }
 
         .header-content {
             position: absolute;
-            top: 60%;
+            top: 55%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
             width: 90%;
-            max-width: 800px;
+            max-width: 900px;
             z-index: 2;
         }
 
         .logo {
-            font-size: 3.5rem;
-            background: var(--gradient-red);
+            font-size: 4.5rem;
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-weight: 900;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             margin-bottom: 15px;
             text-transform: uppercase;
-            opacity: 0.8;
+            filter: drop-shadow(0 10px 20px rgba(6, 247, 247, 0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
 
         .tagline {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            font-style: italic;
-            margin-bottom: 5px;
-            opacity: 0.9;
-            position: relative;
-            top: -25px;
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-top: -15px;
+            background: linear-gradient(45deg, var(--text-muted), #CBD5E1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* Баннер */
+        /* ===== СОВРЕМЕННЫЙ БАННЕР ===== */
         .emergency-banner {
-            background: #2D3748;
-            color: white;
-            padding: 18px;
+            background: linear-gradient(135deg, rgba(255, 59, 140, 0.15), rgba(6, 247, 247, 0.15));
+            backdrop-filter: var(--glass-blur);
+            color: var(--text-light);
+            padding: 22px 40px;
             text-align: center;
-            font-size: 1.2rem;
-            font-weight: 700;
-            border-radius: 12px;
-            margin: 25px auto;
-            width: 95%;
-            max-width: 1000px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            font-size: 1.25rem;
+            font-weight: 600;
+            border-radius: 20px;
+            margin: 35px auto;
+            width: 92%;
+            max-width: 1100px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            animation: pulseGlow 2s infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: var(--shadow-lg); }
+            50% { box-shadow: var(--shadow-lg), 0 0 30px rgba(255, 59, 140, 0.3); }
         }
 
         .emergency-banner::before {
-            content: '🚨';
+            content: '✨';
             position: absolute;
-            left: 20px;
+            left: 25px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1.8rem;
+            font-size: 2rem;
+            filter: drop-shadow(0 0 10px rgba(255, 59, 140, 0.5));
         }
 
-        /* Печатающийся текст */
-        .typing-container {
-            background: #2D3748;
-            color: white;
-            padding: 20px;
-            border-radius: 15px;
-            margin: 25px auto;
-            width: 95%;
+        .emergency-banner::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-secondary);
+        }
+
+        /* ===== СОВРЕМЕННАЯ ПОИСКОВАЯ СТРОКА ===== */
+        .search-container {
             max-width: 1000px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            margin: 25px auto 35px auto;
+            background: var(--bg-glass);
+            backdrop-filter: var(--glass-blur);
+            padding: 20px 28px;
+            border-radius: 24px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
+            height: 72px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .search-container:hover {
+            border-color: rgba(6, 247, 247, 0.3);
+            box-shadow: var(--shadow-lg), var(--border-glow);
+            transform: translateY(-2px);
         }
 
         .search-icon {
-            font-size: 1.8rem;
-            color: var(--accent-blue);
-            animation: pulse 2s infinite;
+            font-size: 1.4rem;
+            color: var(--accent-cyan);
+            flex-shrink: 0;
+            padding: 10px;
+            background: rgba(6, 247, 247, 0.1);
+            border-radius: 12px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .typing-text {
+        .search-text {
             flex: 1;
             font-size: 1.3rem;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 16px 22px;
+            border-radius: 16px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            border: 1px solid rgba(6, 247, 247, 0.15);
+            color: var(--text-light);
+            overflow: hidden;
             font-weight: 500;
-            min-height: 32px;
-            font-family: 'Courier New', monospace;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 10px 15px;
-            border-radius: 8px;
-            border: 1px solid rgba(0, 194, 255, 0.2);
+            letter-spacing: 0.5px;
         }
 
         .cursor {
             display: inline-block;
-            width: 3px;
-            background: var(--accent-blue);
-            animation: blink 1s infinite;
-            margin-left: 2px;
-            height: 1.2em;
+            width: 4px;
+            height: 1.6rem;
+            background: var(--accent-cyan);
+            animation: blink 1.2s infinite;
+            margin-left: 6px;
             vertical-align: middle;
+            border-radius: 2px;
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .search-button {
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-            color: white;
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-weight: 600;
+        .search-btn {
+            background: var(--gradient-primary);
+            color: var(--bg-main);
+            padding: 14px 32px;
+            border-radius: 16px;
+            font-weight: 700;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
-        }
-
-        .search-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(157, 78, 221, 0.3);
-        }
-
-        /* Заголовок */
-        .main-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin: 40px 15px;
-            background: var(--gradient-blue);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 1.5px;
+            flex-shrink: 0;
+            border: none;
+            font-size: 1.1rem;
+            letter-spacing: 0.5px;
             position: relative;
-            font-family: 'Arial Black', 'Impact', sans-serif;
-            font-weight: 900;
+            overflow: hidden;
+        }
+
+        .search-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(6, 247, 247, 0.3);
+        }
+
+        .search-btn:hover::before {
+            left: 100%;
+        }
+
+        /* ===== ГЛАВНЫЙ ЗАГОЛОВОК ===== */
+        .main-title {
+            font-size: 3rem;
+            text-align: center;
+            margin: 50px 20px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -1px;
+            position: relative;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
             text-transform: uppercase;
         }
 
         .main-title::after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -20px;
             left: 50%;
             transform: translateX(-50%);
-            width: 150px;
-            height: 3px;
-            background: var(--gradient-blue);
+            width: 180px;
+            height: 4px;
+            background: var(--gradient-accent);
             border-radius: 2px;
+            box-shadow: 0 0 20px rgba(255, 209, 102, 0.3);
         }
 
-        /* Карточки котиков */
+        /* ===== СОВРЕМЕННЫЕ КАРТОЧКИ ===== */
         .cats-section {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 40px;
-            padding: 0 20px;
+            padding: 0 30px;
             max-width: 1400px;
-            margin: 0 auto 60px;
+            margin: 0 auto 80px;
         }
 
         .cat-card {
-            background: var(--dark-card);
-            border-radius: 20px;
-            padding: 30px;
+            background: var(--bg-card);
+            border-radius: 28px;
+            padding: 35px;
             width: 100%;
-            max-width: 500px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            max-width: 520px;
+            box-shadow: var(--shadow-xl);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             position: relative;
             overflow: hidden;
             cursor: pointer;
@@ -397,74 +552,103 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--gradient-red);
+            right: 0;
+            height: 5px;
+            background: var(--gradient-primary);
+            z-index: 1;
+        }
+
+        .cat-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(6, 247, 247, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(157, 78, 221, 0.05) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .cat-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(255, 59, 92, 0.2);
-            border-color: rgba(255, 59, 92, 0.3);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 
+                var(--shadow-xl),
+                0 0 40px rgba(6, 247, 247, 0.2);
+            border-color: rgba(6, 247, 247, 0.3);
         }
 
         .cat-name {
-            font-size: 1.8rem;
-            background: var(--gradient-purple);
+            font-size: 2rem;
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
+            -webkit-text-fill-color: transparent;
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         .cat-image {
             width: 100%;
-            height: 280px;
+            height: 300px;
             object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 25px;
-            border: 3px solid rgba(157, 78, 221, 0.3);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 3px solid rgba(157, 78, 221, 0.2);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.4),
+                inset 0 0 30px rgba(157, 78, 221, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .cat-card:hover .cat-image {
+            border-color: rgba(157, 78, 221, 0.4);
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.5),
+                inset 0 0 40px rgba(157, 78, 221, 0.2);
         }
 
         .cat-description {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: var(--text-gray);
-            margin-bottom: 20px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 25px;
         }
 
         .medical-info {
-            background: rgba(255, 59, 92, 0.1);
-            border-left: 4px solid var(--accent-red);
-            padding: 20px;
-            margin: 25px 0;
-            border-radius: 0 10px 10px 0;
+            background: linear-gradient(135deg, rgba(255, 59, 140, 0.1), rgba(6, 247, 247, 0.05));
             backdrop-filter: blur(10px);
+            border-left: 4px solid var(--accent-pink);
+            padding: 22px;
+            margin: 30px 0;
+            border-radius: 0 16px 16px 0;
+            border: 1px solid rgba(255, 59, 140, 0.1);
         }
 
         .medical-info h3 {
-            color: var(--accent-red);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
+            color: var(--accent-pink);
+            margin-bottom: 12px;
+            font-size: 1.3rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            font-weight: 600;
         }
 
-        /* Секция донатов */
+        /* ===== СОВРЕМЕННАЯ СЕКЦИЯ ДОНАТОВ ===== */
         .donation-section {
             text-align: center;
-            margin: 60px auto;
+            margin: 80px auto;
             max-width: 95%;
-            padding: 40px;
-            background: var(--dark-card);
-            border-radius: 25px;
+            padding: 50px;
+            background: var(--bg-card);
+            border-radius: 32px;
             position: relative;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(0, 194, 255, 0.2);
+            box-shadow: var(--shadow-xl);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             overflow: hidden;
         }
 
@@ -475,83 +659,111 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(0,194,255,0.1) 0%, transparent 70%);
+            background: 
+                radial-gradient(circle at 30% 30%, rgba(6, 247, 247, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(157, 78, 221, 0.08) 0%, transparent 50%);
             z-index: -1;
         }
 
         .donation-title {
-            font-size: 2rem;
-            background: var(--gradient-blue);
+            font-size: 2.5rem;
+            background: var(--gradient-primary);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 20px;
-            font-weight: 700;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            font-weight: 800;
         }
 
         .donation-amount {
-            font-size: 3.5rem;
-            background: var(--gradient-red);
+            font-size: 4.5rem;
+            background: var(--gradient-secondary);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-weight: 900;
-            margin: 30px 0;
-            text-shadow: 0 5px 15px rgba(255, 59, 92, 0.3);
+            margin: 40px 0;
+            text-shadow: 0 10px 30px rgba(255, 59, 140, 0.3);
+            animation: pulse 2s infinite;
         }
 
-        /* Прогресс бар */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
         .progress-section {
-            margin: 40px auto;
+            margin: 50px auto;
             text-align: center;
-            max-width: 800px;
+            max-width: 900px;
         }
 
         .progress-bar {
-            height: 30px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
+            height: 36px;
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
             overflow: hidden;
-            margin: 25px 0;
-            border: 2px solid rgba(0, 194, 255, 0.3);
+            margin: 30px 0;
+            border: 2px solid rgba(6, 247, 247, 0.2);
             position: relative;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
         }
 
         .progress-fill {
             height: 100%;
-            background: var(--gradient-red);
+            background: var(--gradient-secondary);
             width: 65%;
-            border-radius: 15px;
+            border-radius: 18px;
             position: relative;
-            transition: width 2s ease-in-out;
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            padding-right: 20px;
+            padding-right: 25px;
             font-weight: 700;
-            color: white;
-            font-size: 1rem;
+            color: var(--bg-main);
+            font-size: 1.1rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
 
-        /* Кнопка доната */
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
         .donate-button {
-            background: var(--gradient-red);
-            color: white;
+            background: var(--gradient-secondary);
+            color: var(--bg-main);
             border: none;
-            padding: 22px 60px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            border-radius: 50px;
+            padding: 25px 70px;
+            font-size: 1.6rem;
+            font-weight: 800;
+            border-radius: 60px;
             cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 25px;
-            box-shadow: 0 15px 30px rgba(255, 59, 92, 0.4);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-top: 35px;
+            box-shadow: 
+                0 20px 40px rgba(255, 59, 140, 0.4),
+                0 0 30px rgba(255, 59, 140, 0.2);
             display: inline-flex;
             align-items: center;
-            gap: 15px;
+            gap: 20px;
             position: relative;
             overflow: hidden;
             z-index: 1;
+            letter-spacing: 1px;
         }
 
         .donate-button::before {
@@ -561,146 +773,171 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: var(--gradient-purple);
-            transition: left 0.4s;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.6s;
             z-index: -1;
         }
 
-        .donate-button:hover::before {
-            left: 0;
+        .donate-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 
+                0 30px 60px rgba(255, 59, 140, 0.6),
+                0 0 50px rgba(255, 59, 140, 0.3);
         }
 
-        .donate-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(255, 59, 92, 0.6);
+        .donate-button:hover::before {
+            left: 100%;
         }
 
         .donate-button:active {
-            transform: translateY(0) scale(0.98);
+            transform: translateY(-4px) scale(1.02);
         }
 
-        /* Методы оплаты */
+        /* ===== МЕТОДЫ ОПЛАТЫ ===== */
         .payment-methods {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
-            margin-top: 35px;
+            margin-top: 45px;
         }
 
         .payment-method {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 18px 28px;
-            border-radius: 12px;
-            border: 1px solid rgba(0, 194, 255, 0.2);
+            background: var(--bg-glass);
+            backdrop-filter: blur(10px);
+            padding: 20px 32px;
+            border-radius: 16px;
+            border: 1px solid rgba(6, 247, 247, 0.2);
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: all 0.3s;
+            gap: 15px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             color: var(--text-light);
-            backdrop-filter: blur(10px);
         }
 
         .payment-method:hover {
-            background: rgba(0, 194, 255, 0.1);
-            transform: translateY(-5px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 10px 20px rgba(0, 194, 255, 0.2);
+            background: rgba(6, 247, 247, 0.15);
+            transform: translateY(-8px);
+            border-color: var(--accent-cyan);
+            box-shadow: 0 15px 30px rgba(6, 247, 247, 0.2);
         }
 
-        /* Банковские реквизиты */
+        /* ===== КОНТАКТНАЯ ИНФОРМАЦИЯ ===== */
         .contact-info {
             text-align: center;
-            margin: 70px 0 50px;
-            padding: 40px 20px;
-            background: var(--dark-card);
-            border-top: 3px solid var(--accent-red);
-            border-bottom: 3px solid var(--accent-red);
+            margin: 90px 0 60px;
+            padding: 50px 30px;
+            background: var(--bg-card);
+            border-top: 4px solid var(--accent-pink);
+            border-bottom: 4px solid var(--accent-pink);
             position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(255, 59, 140, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 90% 80%, rgba(6, 247, 247, 0.05) 0%, transparent 50%);
         }
 
         .contact-title {
-            color: var(--accent-blue);
-            font-size: 1.8rem;
-            margin-bottom: 30px;
+            color: var(--accent-cyan);
+            font-size: 2rem;
+            margin-bottom: 40px;
             font-weight: 700;
+            position: relative;
+            z-index: 1;
         }
 
         .bank-details {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 30px;
-            border-radius: 20px;
-            margin: 30px auto;
+            background: var(--bg-glass);
+            backdrop-filter: blur(15px);
+            padding: 35px;
+            border-radius: 24px;
+            margin: 35px auto;
             max-width: 95%;
-            border: 2px solid rgba(157, 78, 221, 0.3);
+            border: 1px solid rgba(157, 78, 221, 0.3);
             text-align: left;
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            font-size: 1.15rem;
             word-break: break-word;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 1;
         }
 
         .bank-details p {
-            margin: 15px 0;
-            padding-left: 20px;
+            margin: 18px 0;
+            padding-left: 25px;
             position: relative;
             color: var(--text-light);
         }
 
         .bank-details p::before {
-            content: '▶';
+            content: '▸';
             position: absolute;
             left: 0;
-            color: var(--accent-red);
+            color: var(--accent-cyan);
+            font-size: 1.3rem;
         }
 
-        /* Футер */
+        /* ===== ФУТЕР ===== */
         footer {
             text-align: center;
-            padding: 40px 20px;
-            background: rgba(0, 0, 0, 0.5);
+            padding: 50px 30px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
             border-top: 3px solid var(--accent-purple);
-            margin-top: 60px;
-            color: var(--text-gray);
-            backdrop-filter: blur(10px);
+            margin-top: 80px;
+            color: var(--text-muted);
+            backdrop-filter: blur(20px);
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
         }
 
         .charity-number {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            margin-top: 20px;
-            line-height: 1.5;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 25px;
+            line-height: 1.6;
             opacity: 0.8;
         }
 
-        /* КРЕАТИВНЫЕ УВЕДОМЛЕНИЯ */
+        /* ===== КРЕАТИВНЫЕ УВЕДОМЛЕНИЯ ===== */
         .custom-alert {
             position: fixed;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-            color: white;
-            padding: 20px 25px;
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            top: 25px;
+            right: 25px;
+            background: var(--gradient-primary);
+            color: var(--bg-main);
+            padding: 22px 28px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-xl);
             z-index: 9999;
             display: none;
-            max-width: 350px;
-            animation: slideIn 0.5s ease-out;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
+            max-width: 400px;
+            animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            border: 1px solid rgba(6, 247, 247, 0.3);
+            backdrop-filter: blur(20px);
         }
 
-        .custom-alert-content {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        @keyframes slideIn {
+        @keyframes slideInRight {
             from {
                 transform: translateX(100%);
                 opacity: 0;
@@ -711,97 +948,146 @@
             }
         }
 
-        /* Адаптивность */
+        .custom-alert-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        /* ===== АДАПТИВНОСТЬ ===== */
+        @media (max-width: 1200px) {
+            .logo { font-size: 3.8rem; }
+            .main-title { font-size: 2.5rem; }
+            .donation-amount { font-size: 3.8rem; }
+        }
+
+        @media (max-width: 992px) {
+            .header-photo-container { height: 450px; }
+            .logo { font-size: 3.2rem; }
+            .modal-cat-name { font-size: 2.5rem; }
+            .cat-card { max-width: 460px; padding: 30px; }
+        }
+
         @media (max-width: 768px) {
-            .header-photo-container {
-                height: 350px;
+            .header-photo-container { height: 400px; }
+            .logo { font-size: 2.8rem; }
+            .main-title { font-size: 2.2rem; margin: 40px 15px; }
+            .emergency-banner { 
+                font-size: 1.1rem; 
+                padding: 18px 18px 18px 60px;
+                margin: 25px auto;
+            }
+            .emergency-banner::before { left: 20px; }
+            
+            .search-container {
+                padding: 18px 22px;
+                height: auto;
+                flex-direction: row;
+                gap: 15px;
+                margin: 20px auto 30px auto;
             }
             
-            .logo {
-                font-size: 2.5rem;
+            .search-text {
+                font-size: 1.2rem;
+                padding: 14px 18px;
+                height: 48px;
             }
             
-            .emergency-banner {
+            .search-btn {
+                padding: 12px 28px;
                 font-size: 1rem;
-                padding: 15px 15px 15px 50px;
             }
             
-            .typing-container {
-                flex-direction: column;
-                padding: 15px;
-                gap: 10px;
-            }
-            
-            .typing-text {
-                width: 100%;
-                font-size: 1.1rem;
-            }
-            
-            .search-button {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .main-title {
-                font-size: 2rem;
+            .search-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 1.3rem;
             }
             
             .cat-card {
                 padding: 25px;
+                max-width: 100%;
             }
             
             .cat-name {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
+            }
+            
+            .cat-image {
+                height: 280px;
             }
             
             .modal-content {
-                width: 98%;
-                margin: 20px auto;
+                width: 96%;
+                margin: 30px auto;
             }
             
             .modal-cat-name {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .cat-gallery {
                 grid-template-columns: repeat(2, 1fr);
-                padding: 20px;
+                padding: 25px;
+                gap: 20px;
+            }
+            
+            .cat-gallery-img {
+                height: 180px;
             }
             
             .donation-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
             .donation-amount {
-                font-size: 2.8rem;
+                font-size: 3.2rem;
             }
             
             .donate-button {
-                padding: 20px 40px;
-                font-size: 1.3rem;
+                padding: 22px 50px;
+                font-size: 1.4rem;
             }
             
             .payment-method {
-                padding: 15px 20px;
-                font-size: 1rem;
+                padding: 18px 25px;
+                font-size: 1.05rem;
             }
             
             .bank-details {
+                padding: 25px;
+                font-size: 1.05rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo { font-size: 2.4rem; }
+            .tagline { font-size: 1.1rem; }
+            .main-title { font-size: 1.9rem; }
+            .emergency-banner { font-size: 1rem; padding: 16px 16px 16px 55px; }
+            
+            .search-container {
+                flex-direction: column;
+                height: auto;
+                gap: 15px;
                 padding: 20px;
-                font-size: 1rem;
             }
-        }
-
-        @media (min-width: 769px) {
-            .header-photo {
-                object-position: center 30%;
+            
+            .search-text {
+                width: 100%;
+                font-size: 1.1rem;
             }
-        }
-
-        @media (max-width: 480px) {
+            
+            .search-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
             .cats-section {
                 flex-direction: column;
                 align-items: center;
+                padding: 0 20px;
+                gap: 30px;
             }
             
             .cat-gallery {
@@ -815,7 +1101,47 @@
             
             .payment-methods {
                 flex-direction: column;
+                align-items: center;
             }
+            
+            .payment-method {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .modal-body {
+                padding: 25px;
+            }
+            
+            .modal-section {
+                padding: 20px;
+            }
+            
+            .custom-alert {
+                max-width: 90%;
+                right: 5%;
+                left: 5%;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .logo { font-size: 2rem; }
+            .header-photo-container { height: 350px; }
+            .cat-image { height: 220px; }
+            .donation-amount { font-size: 2.8rem; }
+            .modal-cat-name { font-size: 1.8rem; }
+        }
+
+        /* ===== АНИМАЦИЯ ПРИ ПРОКРУТКЕ ===== */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -907,7 +1233,7 @@
                     температурного режима и мягкости шерсти.</p>
                     <p><strong>Диагноз:</strong> Терморегуляторная дисфункция</p>
                     <p><strong>Лечение:</strong> Липосакция и трансплантация жира</p>
-                    <p><strong>Стоимость операции:</strong> Двгатель 406 на газель </p>
+                    <p><strong>Стоимость операции:</strong> Двигатель 406 на газель </p>
                 </div>
                 
                 <div class="modal-section">
@@ -926,10 +1252,10 @@
     <!-- Креативное уведомление -->
     <div id="customAlert" class="custom-alert">
         <div class="custom-alert-content">
-            <div style="font-size: 2rem;">🎉</div>
+            <div style="font-size: 2.2rem;">🎉</div>
             <div>
-                <h3 style="margin: 0 0 5px 0; font-size: 1.2rem;">Спасибо!</h3>
-                <p style="margin: 0; font-size: 0.95rem;" id="alertMessage"></p>
+                <h3 style="margin: 0 0 5px 0; font-size: 1.3rem;">Спасибо!</h3>
+                <p style="margin: 0; font-size: 1rem;" id="alertMessage"></p>
             </div>
         </div>
     </div>
@@ -957,14 +1283,14 @@
         СРОЧНО! Кошкам-Очкошка требуется пересадка жира для полноценной жизни!
     </div>
 
-    <!-- Печатающийся текст -->
-    <div class="typing-container">
+    <!-- Поисковая строка -->
+    <div class="search-container">
         <div class="search-icon">🔍</div>
-        <div class="typing-text">
-            <span id="typed-text"></span>
+        <div class="search-text">
+            <span id="search-typing"></span>
             <span class="cursor"></span>
         </div>
-        <div class="search-button" onclick="searchHelp()">Найти помощь</div>
+        <button class="search-btn" onclick="searchHelp()">Поиск</button>
     </div>
 
     <h1 class="main-title">Спасите усатых друзей</h1>
@@ -982,7 +1308,7 @@
                 <h3>🏥 Медицинское заключение:</h3>
                 <p>Дефицит жира 3-й степени. Без операции прогноз неблагоприятный.</p>
             </div>
-            <div style="text-align: center; margin-top: 15px; color: var(--accent-blue);">
+            <div style="text-align: center; margin-top: 20px; color: var(--accent-cyan);">
                 <i class="fas fa-expand-alt"></i> Нажмите для просмотра фотографий
             </div>
         </div>
@@ -999,7 +1325,7 @@
                 <h3>🏥 Медицинское заключение:</h3>
                 <p>Нарушение терморегуляции. Требуется срочное вмешательство.</p>
             </div>
-            <div style="text-align: center; margin-top: 15px; color: var(--accent-blue);">
+            <div style="text-align: center; margin-top: 20px; color: var(--accent-cyan);">
                 <i class="fas fa-expand-alt"></i> Нажмите для просмотра фотографий
             </div>
         </div>
@@ -1007,7 +1333,7 @@
 
     <div class="donation-section">
         <h2 class="donation-title">Собираем на пересадку жира</h2>
-        <p style="font-size: 1.2rem; margin: 20px 0; color: var(--text-gray);">
+        <p style="font-size: 1.25rem; margin: 25px 0; color: var(--text-muted);">
             Ваше пожертвование подарит шанс на счастливую жизнь!
         </p>
         
@@ -1019,7 +1345,7 @@
             <div class="progress-bar">
                 <div class="progress-fill">65%</div>
             </div>
-            <p style="color: var(--text-gray);">Уже собрано 65% от необходимой суммы</p>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">Уже собрано 65% от необходимой суммы</p>
         </div>
 
         <button class="donate-button" onclick="donateNow()">
@@ -1034,7 +1360,7 @@
                 <i class="fab fa-cc-paypal" style="color: #003087;"></i> PayPal
             </div>
             <div class="payment-method">
-                <i class="fas fa-university" style="color: var(--accent-blue);"></i> Банк
+                <i class="fas fa-university" style="color: var(--accent-cyan);"></i> Банк
             </div>
             <div class="payment-method">
                 <i class="fab fa-cc-apple-pay" style="color: #fff;"></i> Apple Pay
@@ -1049,23 +1375,78 @@
             <p><strong>Получатель:</strong> Муканаев Реналь</p>
             <p><strong>Банк:</strong> АО "Тинькофф Банк"</p>
             <p><strong>Номер:</strong> +79198613177</p>
-            <p><strong>БИК хуик:</strong> 044525974</p>
+            <p><strong>БИК:</strong> 044525974</p>
             <p><strong>Назначение:</strong> Благотворительное пожертвование на операцию кошкам</p>
         </div>
 
-        <p style="margin-top: 25px; line-height: 1.6; color: var(--text-light);">
-            <i class="fas fa-phone"></i> +7 (919) 861-31-77<br>
-            <i class="fas fa-envelope"></i> renalkot@rescue.org
+        <p style="margin-top: 30px; line-height: 1.6; color: var(--text-light); font-size: 1.1rem;">
+            <i class="fas fa-phone" style="color: var(--accent-cyan);"></i> +7 (919) 861-31-77<br>
+            <i class="fas fa-envelope" style="color: var(--accent-cyan);"></i> renalkot@rescue.org
         </p>
     </div>
 
     <footer>
-        <p>Cat Rescue Foundation © 2024 | Все пожертвования идут на лечение животных</p>
+        <p style="font-size: 1.1rem; margin-bottom: 15px;">Cat Rescue Foundation © 2024 | Все пожертвования идут на лечение животных</p>
         <p class="charity-number">Регистрационный номер благотворительного фонда: №123456789 от 01.01.2024</p>
     </footer>
 
     <script>
-        // Функции для модальных окон
+        // ===== ПОИСКОВАЯ СТРОКА =====
+        const searchPhrases = [
+            "Хочу помочь котикам найти дом",
+            "Ищу питомца для своей семьи",
+            "Как стать волонтёром приюта?",
+            "Нужна консультация по уходу",
+            "Ищу информацию о породах",
+            "Хочу пожертвовать на лечение"
+        ];
+
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function typeSearchText() {
+            const typingEl = document.getElementById('search-typing');
+            if (!typingEl) return;
+            
+            const currentPhrase = searchPhrases[phraseIndex];
+            
+            if (isDeleting) {
+                typingEl.textContent = currentPhrase.slice(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 50;
+            } else {
+                typingEl.textContent = currentPhrase.slice(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100;
+            }
+            
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typingSpeed = 1500;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % searchPhrases.length;
+                typingSpeed = 500;
+            }
+            
+            setTimeout(typeSearchText, typingSpeed);
+        }
+
+        // Функция для кнопки поиска
+        function searchHelp() {
+            const btn = document.querySelector('.search-btn');
+            if (btn) {
+                btn.style.transform = 'scale(0.95)';
+                setTimeout(() => btn.style.transform = '', 200);
+                
+                const randomCat = Math.random() > 0.5 ? 'Мурлыкас' : 'Леди Шлюндра';
+                showCreativeAlert(`🔍 Ищем информацию о ${randomCat}...`);
+            }
+        }
+
+        // ===== ОСНОВНЫЕ ФУНКЦИИ =====
         function openModal(modalId) {
             document.getElementById(modalId).style.display = 'block';
             document.body.style.overflow = 'hidden';
@@ -1098,40 +1479,46 @@
         // Создание звездного фона
         function createStars() {
             const starsContainer = document.getElementById('stars');
-            for (let i = 0; i < 150; i++) {
+            for (let i = 0; i < 180; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
-                star.style.width = Math.random() * 3 + 'px';
-                star.style.height = star.style.width;
+                star.style.width = star.style.height = Math.random() * 3 + 1 + 'px';
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
                 star.style.animationDelay = Math.random() * 5 + 's';
-                star.style.opacity = Math.random() * 0.5 + 0.1;
+                star.style.animationDuration = 2 + Math.random() * 3 + 's';
                 starsContainer.appendChild(star);
             }
         }
 
         // Эффект конфетти
         function createConfetti() {
-            const colors = ['#FF3B5C', '#00C2FF', '#9D4EDD', '#FFD700', '#00FF87'];
-            for (let i = 0; i < 100; i++) {
+            const colors = ['#06F7F7', '#9D4EDD', '#FF3B8C', '#FFD166', '#06D6A0'];
+            for (let i = 0; i < 120; i++) {
                 const confetti = document.createElement('div');
                 confetti.style.position = 'fixed';
-                confetti.style.width = '10px';
-                confetti.style.height = '10px';
+                confetti.style.width = '12px';
+                confetti.style.height = '12px';
                 confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.borderRadius = '50%';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
                 confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.top = '-10px';
+                confetti.style.top = '-20px';
                 confetti.style.zIndex = '9999';
                 confetti.style.pointerEvents = 'none';
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
                 document.body.appendChild(confetti);
                 
                 const animation = confetti.animate([
-                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
-                    { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`, opacity: 0 }
+                    { 
+                        transform: `translateY(0) rotate(${Math.random() * 360}deg)`, 
+                        opacity: 1 
+                    },
+                    { 
+                        transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 720}deg)`, 
+                        opacity: 0 
+                    }
                 ], {
-                    duration: 2000 + Math.random() * 2000,
+                    duration: 1800 + Math.random() * 1200,
                     easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
                 });
                 
@@ -1154,7 +1541,7 @@
             
             setTimeout(() => {
                 alertDiv.style.display = 'none';
-            }, 5000);
+            }, 4000);
             
             alertDiv.onclick = function() {
                 this.style.display = 'none';
@@ -1167,12 +1554,15 @@
             const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
             
             const button = document.querySelector('.donate-button');
+            const originalHTML = button.innerHTML;
+            const originalBackground = button.style.background;
+            
             button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Обработка ${randomAmount} ₽...`;
-            button.style.background = 'var(--gradient-purple)';
+            button.style.background = 'var(--gradient-primary)';
             
             setTimeout(() => {
                 button.innerHTML = `<i class="fas fa-check"></i> ${randomAmount} ₽ отправлены!`;
-                button.style.background = 'var(--gradient-blue)';
+                button.style.background = 'var(--gradient-secondary)';
                 
                 const messages = [
                     `Ваши ${randomAmount} ₽ уже летят к Реналю! 🚀`,
@@ -1188,79 +1578,28 @@
                 createConfetti();
                 
                 setTimeout(() => {
-                    button.innerHTML = `<i class="fas fa-gem"></i> Отправить деньги Реналю`;
-                    button.style.background = 'var(--gradient-red)';
+                    button.innerHTML = originalHTML;
+                    button.style.background = originalBackground;
                 }, 3000);
             }, 2000);
         }
         
-        // Фразы для печатающегося текста
-        const typingPhrases = [
-            "Хочу помочь бедным котикам?",
-            "Когда Реналь починит свою газель?",
-            "Лучшие матери кошек, Диана...",
-            "Сколько жира нужно кошке для счастья?",
-            "Почему очкошки такие благородные?",
-            "Мурлыкание лечит душу, а жир - тело",
-            "Ищем: волонтеров с золотыми руками",
-            "Нужен механик для газели 406",
-            "Диана - кошачий психолог №1",
-            "Рита знает все о британских кошках",
-            "Спасение усатых - наша миссия",
-            "Каждый рубль = кошачье мурлыканье"
-        ];
-
-        let currentPhraseIndex = 0;
-        let currentCharIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 100;
-
-        function typeText() {
-            const typedTextElement = document.getElementById('typed-text');
-            if (!typedTextElement) return;
-            
-            const currentPhrase = typingPhrases[currentPhraseIndex];
-            
-            if (isDeleting) {
-                typedTextElement.textContent = currentPhrase.substring(0, currentCharIndex - 1);
-                currentCharIndex--;
-                typingSpeed = 50;
-            } else {
-                typedTextElement.textContent = currentPhrase.substring(0, currentCharIndex + 1);
-                currentCharIndex++;
-                typingSpeed = 100;
-            }
-            
-            if (!isDeleting && currentCharIndex === currentPhrase.length) {
-                typingSpeed = 1500;
-                isDeleting = true;
-            } else if (isDeleting && currentCharIndex === 0) {
-                isDeleting = false;
-                currentPhraseIndex = (currentPhraseIndex + 1) % typingPhrases.length;
-                typingSpeed = 500;
-            }
-            
-            setTimeout(typeText, typingSpeed);
+        // ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ =====
+        function checkScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100) {
+                    el.classList.add('visible');
+                }
+            });
         }
 
-        // Функция для кнопки поиска
-        function searchHelp() {
-            const searchBtn = document.querySelector('.search-button');
-            if (searchBtn) {
-                searchBtn.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    searchBtn.style.transform = '';
-                }, 200);
-                
-                const randomCat = Math.random() > 0.5 ? 'Мурлыкас' : 'Леди Шлюндра';
-                showCreativeAlert(`🔍 Ищем помощь для ${randomCat}...`);
-            }
-        }
-        
-        // Инициализация при загрузке страницы
+        // ===== ИНИЦИАЛИЗАЦИЯ =====
         document.addEventListener('DOMContentLoaded', function() {
             createStars();
             
+            // Анимация прогресс-бара
             const progressFill = document.querySelector('.progress-fill');
             let width = 0;
             const interval = setInterval(() => {
@@ -1271,10 +1610,31 @@
                     progressFill.style.width = width + '%';
                     progressFill.textContent = width + '%';
                 }
-            }, 30);
+            }, 25);
             
-            // Запускаем печатающийся текст через 1 секунду
-            setTimeout(typeText, 1000);
+            // Запускаем печатающийся текст
+            setTimeout(typeSearchText, 800);
+            
+            // Добавляем анимацию при скролле
+            const elementsToAnimate = document.querySelectorAll('.cat-card, .donation-section, .contact-info');
+            elementsToAnimate.forEach(el => el.classList.add('animate-on-scroll'));
+            
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // Проверяем при загрузке
+            
+            // Плавная прокрутка для якорей
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
         });
     </script>
 </body>
