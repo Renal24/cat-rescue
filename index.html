@@ -239,46 +239,58 @@
             box-shadow: var(--shadow-lg);
         }
 
-        .header-photo-container {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            overflow: hidden;
-            -webkit-mask-image: linear-gradient(to bottom, 
-                rgba(0,0,0,1) 70%, 
-                rgba(0,0,0,0) 100%);
-            mask-image: linear-gradient(to bottom, 
-                rgba(0,0,0,1) 70%, 
-                rgba(0,0,0,0) 100%);
-        }
+        /* Обновляем стили для шапки */
+.header-photo-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    /* Убираем старый маск-градиент */
+    -webkit-mask-image: none;
+    mask-image: none;
+}
 
-        .header-photo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 30%;
-            filter: brightness(0.4) saturate(1.2);
-            transform: scale(1.05);
-            transition: transform 10s ease;
-        }
+.header-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    filter: brightness(0.4) saturate(1.2);
+    transform: scale(1.05);
+    transition: transform 10s ease;
+}
 
-        .header-with-photo:hover .header-photo {
-            transform: scale(1.08);
-        }
+/* Добавляем градиентную маску */
+.header-photo-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 50%,
+        var(--bg-main) 100%
+    );
+    z-index: 1;
+}
 
-        .header-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                to bottom,
-                rgba(11, 15, 26, 0.8) 0%,
-                rgba(11, 15, 26, 0.9) 50%,
-                rgba(11, 15, 26, 0.95) 100%
-            );
-        }
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        rgba(11, 15, 26, 0.8) 0%,
+        rgba(11, 15, 26, 0.4) 30%,
+        rgba(11, 15, 26, 0.9) 70%,
+        rgba(11, 15, 26, 1) 100%
+    );
+    z-index: 2;
+}
 
         .header-content {
             position: absolute;
