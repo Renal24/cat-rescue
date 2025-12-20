@@ -148,7 +148,7 @@
             gap: 10px;
         }
 
-        /* Остальные стили остаются как были */
+        /* Звезды */
         .stars {
             position: fixed;
             top: 0;
@@ -171,6 +171,7 @@
             50% { opacity: 1; }
         }
 
+        /* Шапка */
         .header-with-photo {
             width: 100%;
             position: relative;
@@ -178,17 +179,16 @@
         }
 
         .header-photo-container {
-    position: relative;
-    width: 100%;
-    height: 450px;
-    /* Добавляем маску для плавного перехода */
-    -webkit-mask-image: linear-gradient(to bottom, 
-        rgba(0,0,0,1) 70%, 
-        rgba(0,0,0,0) 100%);
-    mask-image: linear-gradient(to bottom, 
-        rgba(0,0,0,1) 70%, 
-        rgba(0,0,0,0) 100%);
-}
+            position: relative;
+            width: 100%;
+            height: 450px;
+            -webkit-mask-image: linear-gradient(to bottom, 
+                rgba(0,0,0,1) 70%, 
+                rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to bottom, 
+                rgba(0,0,0,1) 70%, 
+                rgba(0,0,0,0) 100%);
+        }
 
         .header-photo {
             width: 100%;
@@ -220,44 +220,45 @@
         }
 
         .logo {
-    font-size: 3.5rem;
-    background: var(--gradient-red);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: 900;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    opacity: 0.8; /* ← Добавь эту строку */
-}
+            font-size: 3.5rem;
+            background: var(--gradient-red);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
 
         .tagline {
-    font-size: 1.2rem; /* Можно 1rem, 1.1rem, 0.95rem */
-    color: var(--text-gray);
-    font-style: italic;
-    margin-bottom: 5px; /* Меньше отступ снизу */
-    opacity: 0.9;
-    position: relative;
-    top: -25px; /* Поднимаем текст на 15px вверх */
-}
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            font-style: italic;
+            margin-bottom: 5px;
+            opacity: 0.9;
+            position: relative;
+            top: -25px;
+        }
 
+        /* Баннер */
         .emergency-banner {
-    background: #2D3748; /* Серый цвет фона */
-    color: white;
-    padding: 18px;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: 700;
-    border-radius: 12px;
-    margin: 25px auto;
-    width: 95%;
-    max-width: 1000px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Внешняя серая тень */
-    position: relative;
-    overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.1);
-}
+            background: #2D3748;
+            color: white;
+            padding: 18px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 12px;
+            margin: 25px auto;
+            width: 95%;
+            max-width: 1000px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
 
         .emergency-banner::before {
             content: '🚨';
@@ -268,20 +269,21 @@
             font-size: 1.8rem;
         }
 
+        /* Заголовок */
         .main-title {
-    font-size: 2.5rem;
-    text-align: center;
-    margin: 40px 15px;
-    background: var(--gradient-blue);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 1.5px;
-    position: relative;
-    font-family: 'Arial Black', 'Impact', sans-serif; /* ← Добавь эту строку */
-    font-weight: 900;
-    text-transform: uppercase; /* ← Сделать заглавными как Meow Mission */
-}
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 40px 15px;
+            background: var(--gradient-blue);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1.5px;
+            position: relative;
+            font-family: 'Arial Black', 'Impact', sans-serif;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
 
         .main-title::after {
             content: '';
@@ -295,6 +297,7 @@
             border-radius: 2px;
         }
 
+        /* Карточки котиков */
         .cats-section {
             display: flex;
             flex-wrap: wrap;
@@ -603,6 +606,41 @@
             opacity: 0.8;
         }
 
+        /* КРЕАТИВНЫЕ УВЕДОМЛЕНИЯ */
+        .custom-alert {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            color: white;
+            padding: 20px 25px;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            display: none;
+            max-width: 350px;
+            animation: slideIn 0.5s ease-out;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .custom-alert-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
         /* Адаптивность */
         @media (max-width: 768px) {
             .header-photo-container {
@@ -669,11 +707,10 @@
         }
 
         @media (min-width: 769px) {
-    .header-photo {
-        object-position: center 30%; /* Опускает центр фото ниже */
-        /* 0% - сверху, 50% - центр, 100% - снизу */
-    }
-}
+            .header-photo {
+                object-position: center 30%;
+            }
+        }
 
         @media (max-width: 480px) {
             .cats-section {
@@ -694,43 +731,6 @@
                 flex-direction: column;
             }
         }
-
-        /* ========== КРЕАТИВНЫЕ УВЕДОМЛЕНИЯ ========== */
-.custom-alert {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-    color: white;
-    padding: 20px 25px;
-    border-radius: 15px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-    z-index: 9999;
-    display: none;
-    max-width: 350px;
-    animation: slideIn 0.5s ease-out;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(10px);
-}
-
-.custom-alert-content {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateX(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-/* ========== КОНЕЦ УВЕДОМЛЕНИЙ ========== */
-        
     </style>
 </head>
 <body>
@@ -833,6 +833,17 @@
                     Предпочитает тихие вечера на мягких подушках. 
                     Обладает невероятно густой и мягкой шерстью.</p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Креативное уведомление -->
+    <div id="customAlert" class="custom-alert">
+        <div class="custom-alert-content">
+            <div style="font-size: 2rem;">🎉</div>
+            <div>
+                <h3 style="margin: 0 0 5px 0; font-size: 1.2rem;">Спасибо!</h3>
+                <p style="margin: 0; font-size: 0.95rem;" id="alertMessage"></p>
             </div>
         </div>
     </div>
@@ -1003,58 +1014,6 @@
             }
         }
 
-        function donateNow() {
-    const amounts = [500, 1000, 2500, 5000, 10000];
-    const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
-    
-    const button = document.querySelector('.donate-button');
-    button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Обработка ${randomAmount} ₽...`;
-    button.style.background = 'var(--gradient-purple)';
-    
-    // Креативное уведомление вместо alert()
-    setTimeout(() => {
-        button.innerHTML = `<i class="fas fa-check"></i> ${randomAmount} ₽ отправлены!`;
-        button.style.background = 'var(--gradient-blue)';
-        
-        // Показываем креативное уведомление
-        showCreativeAlert(randomAmount);
-        
-        // Эффект конфетти
-        createConfetti();
-        
-        setTimeout(() => {
-            button.innerHTML = `<i class="fas fa-gem"></i> Отправить деньги Реналю`;
-            button.style.background = 'var(--gradient-red)';
-        }, 3000);
-    }, 2000);
-}
-        // Новая функция для креативного уведомления
-function showCreativeAlert(amount) {
-    const messages = [
-        `Ваши ${amount} ₽ уже летят к Реналю! 🚀`,
-        `${amount} ₽ подарили котику надежду! ❤️`,
-        `Вы герой! ${amount} ₽ спасут жизнь! 🦸‍♂️`,
-        `Мурлыканье усилено на ${amount}%! 😻`,
-        `Котики говорят спасибо за ${amount} ₽! 🐾`
-    ];
-    
-    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-    const alertDiv = document.getElementById('customAlert');
-    const messageSpan = document.getElementById('alertMessage');
-    
-    messageSpan.textContent = randomMessage;
-    alertDiv.style.display = 'block';
-    
-    // Автоматическое скрытие через 5 секунд
-    setTimeout(() => {
-        alertDiv.style.display = 'none';
-    }, 5000);
-    
-    // Можно кликнуть чтобы закрыть
-    alertDiv.onclick = function() {
-        this.style.display = 'none';
-    };
-}
         // Эффект конфетти
         function createConfetti() {
             const colors = ['#FF3B5C', '#00C2FF', '#9D4EDD', '#FFD700', '#00FF87'];
@@ -1083,6 +1042,61 @@ function showCreativeAlert(amount) {
                 animation.onfinish = () => confetti.remove();
             }
         }
+
+        // Креативное уведомление
+        function showCreativeAlert(amount) {
+            const messages = [
+                `Ваши ${amount} ₽ уже летят к Реналю! 🚀`,
+                `${amount} ₽ подарили котику надежду! ❤️`,
+                `Вы герой! ${amount} ₽ спасут жизнь! 🦸‍♂️`,
+                `Мурлыканье усилено на ${amount}%! 😻`,
+                `Котики говорят спасибо за ${amount} ₽! 🐾`
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            const alertDiv = document.getElementById('customAlert');
+            const messageSpan = document.getElementById('alertMessage');
+            
+            messageSpan.textContent = randomMessage;
+            alertDiv.style.display = 'block';
+            
+            // Автоматическое скрытие через 5 секунд
+            setTimeout(() => {
+                alertDiv.style.display = 'none';
+            }, 5000);
+            
+            // Можно кликнуть чтобы закрыть
+            alertDiv.onclick = function() {
+                this.style.display = 'none';
+            };
+        }
+
+        // Основная функция доната
+        function donateNow() {
+            const amounts = [500, 1000, 2500, 5000, 10000];
+            const randomAmount = amounts[Math.floor(Math.random() * amounts.length)];
+            
+            const button = document.querySelector('.donate-button');
+            button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Обработка ${randomAmount} ₽...`;
+            button.style.background = 'var(--gradient-purple)';
+            
+            // Креативное уведомление
+            setTimeout(() => {
+                button.innerHTML = `<i class="fas fa-check"></i> ${randomAmount} ₽ отправлены!`;
+                button.style.background = 'var(--gradient-blue)';
+                
+                // Показываем креативное уведомление
+                showCreativeAlert(randomAmount);
+                
+                // Эффект конфетти
+                createConfetti();
+                
+                setTimeout(() => {
+                    button.innerHTML = `<i class="fas fa-gem"></i> Отправить деньги Реналю`;
+                    button.style.background = 'var(--gradient-red)';
+                }, 3000);
+            }, 2000);
+        }
         
         document.addEventListener('DOMContentLoaded', function() {
             createStars();
@@ -1099,17 +1113,6 @@ function showCreativeAlert(amount) {
                 }
             }, 30);
         });
-
-        <!-- Креативное уведомление -->
-<div id="customAlert" class="custom-alert">
-    <div class="custom-alert-content">
-        <div style="font-size: 2rem;">🎉</div>
-        <div>
-            <h3 style="margin: 0 0 5px 0; font-size: 1.2rem;">Спасибо!</h3>
-            <p style="margin: 0; font-size: 0.95rem;" id="alertMessage"></p>
-        </div>
-    </div>
-</div>
     </script>
 </body>
 </html>
