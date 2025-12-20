@@ -240,18 +240,15 @@
         }
 
         /* Обновляем стили для шапки */
-/* Замените стили .header-photo-container */
+/* ЗАМЕНИТЕ ВЕСЬ БЛОК .header-photo-container и .header-photo */
 .header-photo-container {
     position: relative;
     width: 100%;
     height: 500px;
     overflow: hidden;
-    /* Убираем старый маск-градиент полностью */
-    -webkit-mask-image: none;
-    mask-image: none;
+    background: var(--bg-main); /* Фон на случай градиента */
 }
 
-/* Обновляем фото */
 .header-photo {
     width: 100%;
     height: 100%;
@@ -260,16 +257,11 @@
     filter: brightness(0.4) saturate(1.2);
     transform: scale(1.05);
     transition: transform 10s ease;
-    /* Добавляем градиентное затемнение прямо на фото */
-    background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        transparent 50%,
-        var(--bg-main) 100%
-    );
+    /* Накладываем градиент ПРЯМО на изображение */
+    position: relative;
 }
 
-/* Создаем псевдоэлемент для градиента */
+/* Градиентная маска поверх фото */
 .header-photo::after {
     content: '';
     position: absolute;
@@ -280,13 +272,13 @@
     background: linear-gradient(
         to bottom,
         transparent 0%,
-        transparent 40%,
+        transparent 50%,
         var(--bg-main) 100%
     );
     pointer-events: none;
 }
 
-/* Обновляем оверлей */
+/* Оверлей для текста */
 .header-overlay {
     position: absolute;
     top: 0;
@@ -296,9 +288,8 @@
     background: linear-gradient(
         to bottom,
         rgba(11, 15, 26, 0.7) 0%,
-        rgba(11, 15, 26, 0.3) 30%,
-        rgba(11, 15, 26, 0.1) 50%,
-        transparent 100%
+        rgba(11, 15, 26, 0.3) 40%,
+        transparent 70%
     );
     z-index: 2;
 }
@@ -1344,18 +1335,20 @@
 
     <!-- Фото-шапка -->
     <div class="header-with-photo">
-        <div class="header-photo-container">
-            <img src="images/IMG_6495.jpeg" alt="Котик для спасения" class="header-photo">
-            <div class="header-overlay"></div>
-            
-            <div class="header-content">
-                <h1 class="logo">
-                   Meow Mission
-                </h1>
-                <div class="tagline">Спасение животных — наша благородная миссия</div>
-            </div>
+    <div class="header-photo-container">
+        <!-- ТОЛЬКО фото -->
+        <img src="images/IMG_6495.jpeg" alt="Котик для спасения" class="header-photo">
+        
+        <!-- Оверлей для текста -->
+        <div class="header-overlay"></div>
+        
+        <!-- Контент поверх всего -->
+        <div class="header-content">
+            <h1 class="logo">Meow Mission</h1>
+            <div class="tagline">Спасение животных — наша благородная миссия</div>
         </div>
     </div>
+</div>
 
     <!-- Баннер -->
     <div class="emergency-banner">
