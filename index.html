@@ -665,19 +665,16 @@
             }
         }
 
-         @media (min-width: 769px) {
-            .header-photo {
-                margin-top: 60px; /* Фото опустится на 60px */
-            }
-            
-            /* Или если хочешь опустить весь контейнер: */
-            /*
-            .header-photo-container {
-                padding-top: 80px;
-                height: 530px; /* 450px + 80px */
-            }
-            */
-        }
+        @media (min-width: 769px) {
+    .header-photo-container {
+        height: 530px; /* Было 450px, добавили 80px */
+        margin-top: 0; /* Убираем margin-top если был */
+    }
+    
+    .header-photo {
+        margin-top: 80px; /* Опускаем фото внутри контейнера */
+    }
+}
 
 
         @media (max-width: 480px) {
