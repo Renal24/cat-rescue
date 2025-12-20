@@ -990,38 +990,101 @@
         }
 
         /* ===== АДАПТИВНОСТЬ ===== */
-        @media (max-width: 1200px) {
-            .logo { font-size: 3.8rem; color: #35636B; animation: float 3s ease-in-out infinite; }
-            .main-title { font-size: 2.5rem; }
-            .donation-amount { font-size: 3.8rem; }
-        }
+        /* ===== АДАПТИВНОСТЬ ===== */
+@media (max-width: 1200px) {
+    .header-photo-container { 
+        height: 450px; 
+        /* Более резкое исчезновение */
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            rgba(0,0,0,1) 0%,
+            rgba(0,0,0,1) 70%,
+            rgba(0,0,0,0) 100%
+        );
+        mask-image: linear-gradient(
+            to bottom,
+            rgba(0,0,0,1) 0%,
+            rgba(0,0,0,1) 70%,
+            rgba(0,0,0,0) 100%
+        );
+    }
+}
 
-        @media (max-width: 992px) {
-            .header-photo-container { 
-                height: 450px; 
-                -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
-                mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
-            }
-            .logo { 
-                font-size: 3.2rem; 
-                color: #35636B;
-                animation: float 3s ease-in-out infinite;
-            }
-            .modal-cat-name { font-size: 2.5rem; }
-            .cat-card { max-width: 460px; padding: 30px; backdrop-filter: blur(12px); }
-        }
+@media (max-width: 992px) {
+    .header-photo-container { 
+        height: 400px; 
+        /* Еще более резкое исчезновение */
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            rgba(0,0,0,1) 0%,
+            rgba(0,0,0,1) 75%,
+            rgba(0,0,0,0) 100%
+        );
+        mask-image: linear-gradient(
+            to bottom,
+            rgba(0,0,0,1) 0%,
+            rgba(0,0,0,1) 75%,
+            rgba(0,0,0,0) 100%
+        );
+    }
+}
 
-        @media (max-width: 768px) {
-            .header-photo-container { 
-                height: 400px; 
-                -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
-                mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);
-            }
-            .logo { 
-                font-size: 2.8rem; 
-                color: #35636B;
-                animation: float 3s ease-in-out infinite;
-            }
+@media (max-width: 768px) {
+    .header-photo-container { 
+        height: 350px; 
+        /* Полное исчезновение без границы */
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            rgba(0,0,0,1) 0%,
+            rgba(0,0,0,1) 80%,
+            rgba(0,0,0,0) 100%
+        );
+        mask-image: linear-gradient(
+            to bottom,
+            rgba(0,0,0,1) 0%,
+            rgba(0,0,0,1) 80%,
+            rgba(0,0,0,0) 100%
+        );
+    }
+}
+
+@media (max-width: 576px) {
+    .header-photo-container { 
+        height: 320px; 
+        /* Очень резкое исчезновение */
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            rgba(0,0,0,1) 0%,
+            rgba(0,0,0,1) 85%,
+            rgba(0,0,0,0) 100%
+        );
+        mask-image: linear-gradient(
+            to bottom,
+            rgba(0,0,0,1) 0%,
+            rgba(0,0,0,1) 85%,
+            rgba(0,0,0,0) 100%
+        );
+    }
+}
+
+@media (max-width: 400px) {
+    .header-photo-container { 
+        height: 300px; 
+        /* Максимально резкое исчезновение */
+        -webkit-mask-image: linear-gradient(
+            to bottom,
+            rgba(0,0,0,1) 0%,
+            rgba(0,0,0,1) 90%,
+            rgba(0,0,0,0) 100%
+        );
+        mask-image: linear-gradient(
+            to bottom,
+            rgba(0,0,0,1) 0%,
+            rgba(0,0,0,1) 90%,
+            rgba(0,0,0,0) 100%
+        );
+    }
+}
             .main-title { font-size: 2.2rem; margin: 40px 15px; }
             .emergency-banner { 
                 font-size: 1.1rem; 
