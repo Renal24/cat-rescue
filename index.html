@@ -7,182 +7,80 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-/* ===== THEME ===== */
-:root {
-    --bg-main:#0B0F1A;
-    --glass:rgba(255,255,255,.07);
-    --accent:#5EEAD4;
-    --danger:#F87171;
-    --text:#E5E7EB;
-    --muted:#9CA3AF;
-    --blur:blur(16px);
-    --shadow:0 20px 40px rgba(0,0,0,.45);
+:root{
+ --bg:#0B0F1A;
+ --glass:rgba(255,255,255,.07);
+ --accent:#5EEAD4;
+ --danger:#F87171;
+ --text:#E5E7EB;
+ --muted:#9CA3AF;
+ --blur:blur(16px);
+ --shadow:0 20px 40px rgba(0,0,0,.45);
 }
-
-*{box-sizing:border-box;margin:0;padding:0}
-
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-    font-family:system-ui,-apple-system,sans-serif;
-    background:
-      radial-gradient(900px 400px at 10% -10%,rgba(94,234,212,.08),transparent 40%),
-      radial-gradient(600px 300px at 90% 0%,rgba(94,234,212,.05),transparent 40%),
-      var(--bg-main);
-    color:var(--text);
+ font-family:system-ui;
+ background:
+ radial-gradient(900px 400px at 10% -10%,rgba(94,234,212,.08),transparent 40%),
+ var(--bg);
+ color:var(--text);
 }
 
-/* ===== STARS ===== */
+/* STARS */
 .stars{position:fixed;inset:0;z-index:-1}
-.star{
-    position:absolute;
-    width:2px;height:2px;
-    background:#fff;
-    border-radius:50%;
-    opacity:.6;
-    animation:twinkle 4s infinite;
-}
+.star{position:absolute;width:2px;height:2px;background:#fff;border-radius:50%;opacity:.6;animation:twinkle 4s infinite}
 @keyframes twinkle{50%{opacity:.1}}
 
-/* ===== HEADER ===== */
-.header{
-    height:420px;
-    position:relative;
-    overflow:hidden;
-}
-.header img{
-    width:100%;height:100%;
-    object-fit:cover;
-    filter:brightness(.35);
-}
-.header::after{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to bottom,rgba(11,15,26,.6),var(--bg-main));
-}
-.header-content{
-    position:absolute;
-    inset:0;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-}
+/* HEADER */
+.header{height:420px;position:relative}
+.header img{width:100%;height:100%;object-fit:cover;filter:brightness(.35)}
+.header::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(11,15,26,.6),var(--bg))}
+.header-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .logo{font-size:3rem;font-weight:900;color:var(--accent)}
 .tagline{color:var(--muted)}
 
-/* ===== BANNER ===== */
-.banner{
-    margin:30px auto;
-    max-width:900px;
-    background:var(--glass);
-    backdrop-filter:var(--blur);
-    padding:18px;
-    border-radius:16px;
-    text-align:center;
-    box-shadow:var(--shadow);
-}
+/* COMMON */
+.glass{background:var(--glass);backdrop-filter:var(--blur);box-shadow:var(--shadow);border-radius:20px}
 
-/* ===== TYPING ===== */
-.typing{
-    max-width:900px;
-    margin:20px auto;
-    background:var(--glass);
-    backdrop-filter:var(--blur);
-    padding:16px;
-    border-radius:14px;
-    font-family:monospace;
-}
-
-/* ===== CARDS ===== */
-.cards{
-    display:flex;
-    gap:30px;
-    flex-wrap:wrap;
-    justify-content:center;
-    padding:30px;
-}
-.card{
-    width:380px;
-    background:var(--glass);
-    backdrop-filter:var(--blur);
-    padding:22px;
-    border-radius:22px;
-    cursor:pointer;
-    box-shadow:var(--shadow);
-    transition:.3s;
-}
+/* CARDS */
+.cards{display:flex;gap:30px;flex-wrap:wrap;justify-content:center;padding:40px}
+.card{width:360px;padding:20px;cursor:pointer;transition:.3s}
 .card:hover{transform:translateY(-8px)}
-.card img{
-    width:100%;height:230px;
-    object-fit:cover;
-    border-radius:16px;
-    margin:15px 0;
-}
+.card img{width:100%;height:220px;object-fit:cover;border-radius:16px;margin:15px 0}
 .card h3{color:var(--accent);text-align:center}
-.medical{
-    background:rgba(248,113,113,.08);
-    border-left:3px solid var(--danger);
-    padding:12px;
-    border-radius:12px;
-}
+.medical{background:rgba(248,113,113,.08);border-left:3px solid var(--danger);padding:10px;border-radius:10px}
 
-/* ===== DONATION ===== */
-.donation{
-    max-width:900px;
-    margin:60px auto;
-    background:var(--glass);
-    backdrop-filter:var(--blur);
-    padding:40px;
-    border-radius:26px;
-    text-align:center;
+/* DONATION */
+.donation{max-width:900px;margin:60px auto;padding:40px;text-align:center}
+.progress{height:24px;background:rgba(255,255,255,.1);border-radius:12px;overflow:hidden;margin:20px 0}
+.progress-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent),#2dd4bf);display:flex;align-items:center;justify-content:flex-end;padding-right:10px;color:#022c22;font-weight:700;transition:.4s}
+.amounts button{
+ margin:8px;
+ padding:12px 26px;
+ border:none;
+ border-radius:30px;
+ background:var(--glass);
+ color:var(--text);
+ cursor:pointer;
 }
-.progress{
-    height:24px;
-    background:rgba(255,255,255,.1);
-    border-radius:12px;
-    overflow:hidden;
-    margin:20px 0;
-}
-.progress div{
-    width:65%;
-    height:100%;
-    background:linear-gradient(90deg,var(--accent),#2dd4bf);
-    display:flex;
-    justify-content:flex-end;
-    align-items:center;
-    padding-right:10px;
-    color:#022c22;
-    font-weight:700;
-}
-button{
-    margin-top:20px;
-    padding:16px 40px;
-    border:none;
-    border-radius:40px;
-    background:linear-gradient(135deg,var(--accent),#2dd4bf);
-    font-weight:700;
-    cursor:pointer;
-}
+.amounts button:hover{background:rgba(94,234,212,.2)}
 
-/* ===== MODAL ===== */
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.7);
-    backdrop-filter:blur(10px);
-}
-.modal-content{
-    background:#0f172a;
-    max-width:700px;
-    margin:80px auto;
-    padding:30px;
-    border-radius:26px;
-    box-shadow:var(--shadow);
-}
+/* MODAL */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(10px)}
+.modal-content{max-width:700px;margin:80px auto;padding:30px;border-radius:26px;background:#0f172a}
 .close{float:right;cursor:pointer}
 
-/* ===== FOOTER ===== */
+/* TOAST */
+.toast{
+ position:fixed;
+ bottom:30px;right:30px;
+ background:var(--glass);
+ backdrop-filter:var(--blur);
+ padding:14px 22px;
+ border-radius:14px;
+ display:none;
+}
+
 footer{text-align:center;padding:40px;color:var(--muted)}
 </style>
 </head>
@@ -192,76 +90,102 @@ footer{text-align:center;padding:40px;color:var(--muted)}
 <div class="stars" id="stars"></div>
 
 <div class="header">
-    <img src="images/IMG_6495.jpeg">
-    <div class="header-content">
-        <div class="logo">Meow Mission</div>
-        <div class="tagline">Спасаем усатых</div>
-    </div>
+ <img src="images/IMG_6495.jpeg">
+ <div class="header-content">
+  <div class="logo">Meow Mission</div>
+  <div class="tagline">Помогаем тем, кто не может попросить</div>
+ </div>
 </div>
-
-<div class="banner">🚨 Срочный сбор</div>
-
-<div class="typing" id="typing"></div>
 
 <div class="cards">
-    <div class="card" onclick="openModal()">
-        <h3>Мурлыкас</h3>
-        <img src="images/cat1.jpg">
-        <p>Ласковый кот</p>
-        <div class="medical">Дефицит жира</div>
-    </div>
+ <div class="card glass" onclick="openModal(0)">
+  <h3>Мурлыкас</h3>
+  <img src="images/cat1.jpg">
+  <p>Ласковый, найден на улице</p>
+  <div class="medical">Истощение</div>
+ </div>
+
+ <div class="card glass" onclick="openModal(1)">
+  <h3>Луна</h3>
+  <img src="images/cat2.jpg">
+  <p>Молодая кошка</p>
+  <div class="medical">Проблемы с ЖКТ</div>
+ </div>
 </div>
 
-<div class="donation">
-    <h2>Сбор</h2>
-    <div class="progress"><div>65%</div></div>
-    <button onclick="donate()">Отправить деньги</button>
+<div class="donation glass">
+ <h2>Сбор средств</h2>
+ <div class="progress"><div class="progress-bar" id="bar">0%</div></div>
+ <p id="sum">Собрано: 0 ₽ / 10 000 ₽</p>
+
+ <div class="amounts">
+  <button onclick="donate(100)">100 ₽</button>
+  <button onclick="donate(300)">300 ₽</button>
+  <button onclick="donate(500)">500 ₽</button>
+ </div>
 </div>
 
 <div class="modal" id="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">✕</span>
-        <h2>Мурлыкас</h2>
-        <p>Полная история кота</p>
-    </div>
+ <div class="modal-content">
+  <span class="close" onclick="closeModal()">✕</span>
+  <h2 id="mTitle"></h2>
+  <p id="mText"></p>
+ </div>
 </div>
+
+<div class="toast" id="toast">Спасибо за помощь ❤️</div>
 
 <footer>© Meow Mission</footer>
 
 <script>
 /* STARS */
 for(let i=0;i<120;i++){
-    let s=document.createElement('div');
-    s.className='star';
-    s.style.left=Math.random()*100+'%';
-    s.style.top=Math.random()*100+'%';
-    s.style.animationDelay=Math.random()*5+'s';
-    document.getElementById('stars').appendChild(s);
+ let s=document.createElement('div');
+ s.className='star';
+ s.style.left=Math.random()*100+'%';
+ s.style.top=Math.random()*100+'%';
+ document.getElementById('stars').appendChild(s);
 }
 
-/* TYPING */
-const phrases=[
- "Хочу помочь котикам",
- "Каждый рубль важен",
- "Спасение рядом"
+/* DATA */
+const cats=[
+ {name:'Мурлыкас',text:'Найден истощённым возле трассы.'},
+ {name:'Луна',text:'Попала под дождь, проблемы с питанием.'}
 ];
-let p=0,c=0,del=false;
-function type(){
- let el=document.getElementById('typing');
- let t=phrases[p];
- el.textContent=del?t.slice(0,--c):t.slice(0,++c);
- if(!del&&c===t.length){setTimeout(()=>del=true,1200)}
- if(del&&c===0){del=false;p=(p+1)%phrases.length}
- setTimeout(type,del?50:90);
-}
-type();
+
+let current=0;
+let collected=0;
+const goal=10000;
 
 /* MODAL */
-function openModal(){document.getElementById('modal').style.display='block'}
-function closeModal(){document.getElementById('modal').style.display='none'}
+function openModal(i){
+ current=i;
+ modal.style.display='block';
+ mTitle.textContent=cats[i].name;
+ mText.textContent=cats[i].text;
+}
+function closeModal(){modal.style.display='none'}
 
 /* DONATE */
-function donate(){alert('Спасибо!')}
+function donate(sum){
+ collected+=sum;
+ updateProgress();
+ showToast();
+}
+
+/* PROGRESS */
+function updateProgress(){
+ let percent=Math.min(collected/goal*100,100);
+ bar.style.width=percent+'%';
+ bar.textContent=Math.floor(percent)+'%';
+ sum.innerText=`Собрано: ${collected} ₽ / ${goal} ₽`;
+}
+
+/* TOAST */
+function showToast(){
+ toast.style.display='block';
+ setTimeout(()=>toast.style.display='none',2000);
+}
 </script>
 
 </body>
