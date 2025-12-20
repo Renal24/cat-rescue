@@ -261,20 +261,26 @@
         }
 
         /* ===== СОВРЕМЕННАЯ ШАПКА ===== */
-        .header-with-photo {
-            width: 100%;
-            position: relative;
-            overflow: hidden;
-            border-radius: 0 0 40px 40px;
-            box-shadow: var(--shadow-lg);
-        }
+.header-with-photo {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0 0 40px 40px; /* ← УДАЛИТЬ ЭТУ СТРОКУ */
+    box-shadow: var(--shadow-lg);
+}
 
-        .header-photo-container {
-            position: relative;
-            width: 100%;
-            height: 500px;
-            overflow: hidden;
-        }
+.header-photo-container {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to bottom, 
+        rgba(0,0,0,1) 70%, 
+        rgba(0,0,0,0) 100%); /* ← ДОБАВИТЬ ЭТО */
+    mask-image: linear-gradient(to bottom, 
+        rgba(0,0,0,1) 70%, 
+        rgba(0,0,0,0) 100%); /* ← ДОБАВИТЬ ЭТО */
+}
 
         .header-photo {
             width: 100%;
@@ -960,18 +966,31 @@
         }
 
         @media (max-width: 992px) {
-            .header-photo-container { height: 450px; }
-            .logo { font-size: 3.2rem; }
-            .modal-cat-name { font-size: 2.5rem; }
-            .cat-card { max-width: 460px; padding: 30px; }
+    .header-photo-container { 
+        height: 450px; 
+        -webkit-mask-image: linear-gradient(to bottom, 
+            rgba(0,0,0,1) 70%, 
+            rgba(0,0,0,0) 100%);
+        mask-image: linear-gradient(to bottom, 
+            rgba(0,0,0,1) 70%, 
+            rgba(0,0,0,0) 100%);
+            }
         }
 
         @media (max-width: 768px) {
-    .header-photo-container { height: 400px; }
+    .header-photo-container { 
+        height: 400px; 
+        -webkit-mask-image: linear-gradient(to bottom, 
+            rgba(0,0,0,1) 70%, 
+            rgba(0,0,0,0) 100%);
+        mask-image: linear-gradient(to bottom, 
+            rgba(0,0,0,1) 70%, 
+            rgba(0,0,0,0) 100%);
+    }
     .logo { 
         font-size: 2.8rem; 
-        color: #35636B; /* ← ДОБАВЬ ЦВЕТ */
-        animation: float 3s ease-in-out infinite; /* ← ДОБАВЬ АНИМАЦИЮ */
+        color: #35636B;
+        animation: float 3s ease-in-out infinite;
     }
     .main-title { font-size: 2.2rem; margin: 40px 15px; }
     .emergency-banner { 
@@ -980,7 +999,7 @@
         margin: 25px auto;
     }
     .emergency-banner::before { left: 20px; }
-            
+}       
             .search-container {
                 padding: 18px 22px;
                 height: auto;
@@ -1063,11 +1082,27 @@
         }
 
         @media (max-width: 576px) {
-            .logo { font-size: 2.4rem; }
-            .tagline { font-size: 1.1rem; }
-            .main-title { font-size: 1.9rem; }
-            .emergency-banner { font-size: 1rem; padding: 16px 16px 16px 55px; }
-            
+    .logo { 
+        font-size: 2.4rem; 
+        color: #35636B; /* ← ДОБАВЬ ЦВЕТ */
+        animation: float 3s ease-in-out infinite; /* ← ДОБАВЬ АНИМАЦИЮ */
+    }
+    .tagline { font-size: 1.1rem; }
+    .main-title { font-size: 1.9rem; }
+    .emergency-banner { 
+        font-size: 1rem; 
+        padding: 16px 16px 16px 55px; 
+    }
+    .header-photo-container { 
+        height: 350px; /* ← ЕСЛИ ЕСТЬ ВЫСОТА, ДОБАВЬ ЕЁ */
+        -webkit-mask-image: linear-gradient(to bottom, 
+            rgba(0,0,0,1) 70%, 
+            rgba(0,0,0,0) 100%);
+        mask-image: linear-gradient(to bottom, 
+            rgba(0,0,0,1) 70%, 
+            rgba(0,0,0,0) 100%);
+    }
+}
             .search-container {
                 flex-direction: column;
                 height: auto;
@@ -1127,12 +1162,21 @@
         }
 
         @media (max-width: 400px) {
-            .logo { font-size: 2rem; }
-            .header-photo-container { height: 350px; }
-            .cat-image { height: 220px; }
-            .donation-amount { font-size: 2.8rem; }
-            .modal-cat-name { font-size: 1.8rem; }
-        }
+    .logo { 
+        font-size: 2rem; /* или какая у вас там высота */
+        color: #35636B; /* ← ДОБАВЬ ЦВЕТ */
+        animation: float 3s ease-in-out infinite; /* ← ДОБАВЬ АНИМАЦИЮ */
+    }
+    .header-photo-container { 
+        height: 300px; /* или какая у вас там высота */
+        -webkit-mask-image: linear-gradient(to bottom, 
+            rgba(0,0,0,1) 70%, 
+            rgba(0,0,0,0) 100%);
+        mask-image: linear-gradient(to bottom, 
+            rgba(0,0,0,1) 70%, 
+            rgba(0,0,0,0) 100%);
+    }
+}
 
         /* ===== АНИМАЦИЯ ПРИ ПРОКРУТКЕ ===== */
         .animate-on-scroll {
