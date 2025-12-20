@@ -117,15 +117,16 @@
         }
 
         .cat-card {
-            background: var(--white);
-            border: 2px solid var(--soft-peach);
-            border-radius: 18px;
-            padding: 25px;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.07);
-            transition: all 0.3s ease;
-        }
+    background: rgba(255, 255, 255, 0.3); /* Полупрозрачный белый */
+    backdrop-filter: blur(10px); /* Размытие фона под карточкой */
+    border: 2px solid rgba(255, 232, 214, 0.5); /* Полупрозрачная рамка */
+    border-radius: 18px;
+    padding: 25px;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
 
         .cat-card:hover {
             transform: translateY(-8px);
