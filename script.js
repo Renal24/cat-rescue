@@ -1,9 +1,9 @@
-const canvas = document.getElementById('myCanvas');
-const ctx = canvas.getContext('2d');
+const toggle = document.getElementById('theme-toggle');
 
-// Растягиваем холст на весь экран
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-// Твой код для рисования начнется здесь
-console.log("Холст готов к работе!");
+toggle.addEventListener('change', () => {
+    if (toggle.checked) {
+        document.body.classList.add('light-mode');
+    } else {
+        document.body.classList.remove('light-mode');
+    }
+});
