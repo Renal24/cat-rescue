@@ -1,20 +1,18 @@
-/* Обнуляем стандартные отступы браузера */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    width: 100vw;
-    height: 100vh;
-    background-color: #121212; /* Глубокий темный фон */
-    overflow: hidden; /* Чтобы не было полос прокрутки, пока ты рисуешь */
+.header-glass {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 20px 5%;
+    position: fixed;
+    width: 90%;
+    top: 20px;
+    left: 5%;
+    z-index: 1000;
+    /* Эффект стекла */
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
 }
-
-#myCanvas {
-    display: block;
-}
+.logo span { color: #F4A261; }
