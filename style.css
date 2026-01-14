@@ -1,18 +1,71 @@
-.header-glass {
+/* Базовые настройки, чтобы не было белых рамок по бокам */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Подключи этот шрифт в HTML через Google Fonts */
+}
+
+.main-header {
+    background-color: #1a1c20; /* Тот самый темно-антрацитовый цвет */
+    height: 80px;              /* Фиксированная высота шапки */
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.header-container {
+    width: 100%;
+    max-width: 1400px;         /* Ограничиваем ширину контента */
+    margin: 0 auto;            /* Центрируем содержимое */
+    padding: 0 50px;           /* Отступы по бокам */
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%;
-    position: fixed;
-    width: 90%;
-    top: 20px;
-    left: 5%;
-    z-index: 1000;
-    /* Эффект стекла */
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
 }
-.logo span { color: #F4A261; }
+
+.logo {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 40px;                 /* Расстояние между ссылкой и кнопкой */
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: #f4a261;           /* Цвет при наведении */
+}
+
+.btn-book {
+    background-color: #f4a261; /* Оранжевый из макета */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 4px;        /* Легкое закругление как на фото */
+    font-weight: 700;
+    font-size: 14px;
+    transition: 0.3s;
+    text-transform: uppercase;
+}
+
+.btn-book:hover {
+    background-color: #e76f51; /* Чуть темнее при наведении */
+}
