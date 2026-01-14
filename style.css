@@ -1,0 +1,20 @@
+/* Обнуляем стандартные отступы браузера */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: #121212; /* Глубокий темный фон */
+    overflow: hidden; /* Чтобы не было полос прокрутки, пока ты рисуешь */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#myCanvas {
+    display: block;
+}
